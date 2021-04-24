@@ -31,7 +31,7 @@ def booking():
 def thankyou():
     return render_template("thankyou.html")
 
-@app.route("/api/attraction")   #http://127.0.0.1:3000/api/attraction?page=?&keyword=?
+@app.route("/api/attractions")   #http://127.0.0.1:3000/api/attractions?page=?&keyword=?
 def getbaseapi():
     WebPage=request.args.get("page",1) 
     WebKeyword=request.args.get("keyword",None)   
