@@ -2,7 +2,7 @@ import mysql.connector
 DBhost='localhost'        
 DBdatabase='learn_pon'#資料庫
 DBuser='root'         #帳號
-DBpassword='root'     #密碼
+DBpassword='HsuanHao_0610'     #密碼
 #取得資料庫中資料數
 def CheakIdCount():
     connection = mysql.connector.connect(
