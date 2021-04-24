@@ -10,6 +10,7 @@ app.config["TEMPLATES_AUTO_RELOAD"]=True
 
 
 
+
 # Pages
 @app.route("/")
 def index():
@@ -33,13 +34,27 @@ def thankyou():
 
 @app.route("/api/attractions")   #http://127.0.0.1:3000/api/attractions?page=?&keyword=?
 def getbaseapi():
-    WebPage=request.args.get("page",1) 
+    WebPage=request.args.get("page",0) 
     WebKeyword=request.args.get("keyword",None)   
     print("WebPage:",WebPage,"WebKeyword:",WebKeyword)
     data=UseData.LoadDataToDB(WebPage,WebKeyword)
 #   return jsonify({"nextpage":WebPage,"data":data})
-    if (len(data)>=1):
-        return Response(json.dumps({"nextpage":WebPage,"data":data}, sort_keys=False),mimetype='application/json')
+    # if (len(data)==12):
+    #     return Response(json.dumps({"nextpage":int(WebPage)+1,"data":data}, sort_keys=False),mimetype='application/json')
+    # if (len(data)<12) and (len(data)>=1):
+    #     return Response(json.dumps({"nextpage":None,"data":data}, sort_keys=False),mimetype='application/json')
+    
+    data=data[12*int(WebPage):12*(int(WebPage)+1)]
+    if (len(data)>=12):
+        if (len(data)==12):
+            return Response(json.dumps({"nextpage":int(WebPage)+1,"data":data}, sort_keys=False),mimetype='application/json')
+    if (len(data)<12) and (len(data)>=1):
+        return Response(json.dumps({"nextpage":None,"data":data}, sort_keys=False),mimetype='application/json')
+
+
+    
+
+
     else:
         abort(500)
 
@@ -51,7 +66,6 @@ def page_400(error):
 @app.errorhandler(500)
 def page_500(error):
     return Response(json.dumps({"error":True,"message": "自訂的錯誤訊息"}, sort_keys=False),mimetype='application/json'),500
-
 
 
 app.run(host="0.0.0.0", port=3000)

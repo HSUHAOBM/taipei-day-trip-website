@@ -3,7 +3,7 @@ DBhost='localhost'
 DBdatabase='learn_pon'#資料庫
 DBuser='root'         #帳號
 DBpassword='HsuanHao_0610'     #密碼
-#取得資料庫中資料數
+
 def CheakIdCount():
     connection = mysql.connector.connect(
     host=DBhost,         
@@ -58,7 +58,8 @@ def LoadDataToDB(WebPage,WebKeyword):#
     password=DBpassword) 
     if (WebKeyword==None):
         cursor = connection.cursor()
-        cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage)-1)*12,12))
+        # cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage))*12,12))
+        cursor.execute("Select * from taipei_trip ")
 
         
         
@@ -86,7 +87,16 @@ def LoadDataToDB(WebPage,WebKeyword):#
     if (WebKeyword!=None):
         print(WebKeyword)        
         cursor = connection.cursor()
-        cursor.execute("Select * from taipei_trip where stitle='%s';"%(WebKeyword))
+        # cursor.execute("Select * from taipei_trip where stitle like %s;" , ("%" + WebKeyword + "%",))
+        params=['%'+WebKeyword+'%']
+        sql_select="Select * from taipei_trip where stitle like %s;"
+        cursor.execute(sql_select,params)
+
+        # cursor.execute("Select * from taipei_trip where stitle like '%台北%'")
+
+
+
+
         records = cursor.fetchall()        
         data=[]
         for i in range(len(records)):
