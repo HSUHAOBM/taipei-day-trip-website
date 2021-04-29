@@ -1,9 +1,15 @@
 from flask import *
 import mysql.connector
 from custom_models import UseData
+from flask_cors import CORS
 
 
-app=Flask(__name__)
+app=Flask(
+    __name__,
+    static_folder="static",
+    static_url_path="/")
+CORS(app)
+
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 
