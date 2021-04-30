@@ -58,10 +58,9 @@ def LoadDataToDB(WebPage,WebKeyword):#
     password=DBpassword) 
     if (WebKeyword==None):
         cursor = connection.cursor()
-        # cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage))*12,12))
-        cursor.execute("Select * from taipei_trip ")
+        cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage))*12,12))
+        # cursor.execute("Select * from taipei_trip ")
 
-        
         
         records = cursor.fetchall()
         data=[]
