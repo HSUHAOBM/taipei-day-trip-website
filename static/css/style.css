@@ -9,6 +9,8 @@ body {
     margin: 0 auto;
     display: flex;
     padding-top: 10px;
+    align-items:center;
+
 }
 .headleft{
     flex: none;
@@ -20,6 +22,7 @@ body {
     font-size: 30px;
     line-height: 34px;
     color: #448899;
+    text-decoration:none;
 }
 .headcenter{
     flex: auto;

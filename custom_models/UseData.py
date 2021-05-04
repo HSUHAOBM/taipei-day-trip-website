@@ -3,6 +3,7 @@ DBhost='localhost'
 DBdatabase='learn_pon'#資料庫
 DBuser='root'         #帳號
 DBpassword='HsuanHao_0610'     #密碼
+# DBpassword='root'     #密碼
 
 def CheakIdCount():
     connection = mysql.connector.connect(
@@ -37,7 +38,7 @@ def LoadDataToId(id):
         "id":records[0],
         "name":records[1],
         "category": records[2],
-        "description": "，".join(records[3].split("，")[:2]),
+        "description": "，".join(records[3].split("，")[:]),
         "address": records[4],
         "transport": records[5],
         "mrt": records[6],
@@ -71,7 +72,7 @@ def LoadDataToDB(WebPage,WebKeyword):#
                 "id":records[i][0],
                 "name":records[i][1],
                 "category": records[i][2],
-                "description": "，".join(records[i][3].split("，")[:2]),
+                "description": "，".join(records[i][3].split("，")[:]),
                 "address": records[i][4],
                 "transport": records[i][5],
                 "mrt": records[i][6],
@@ -105,7 +106,7 @@ def LoadDataToDB(WebPage,WebKeyword):#
                 "id":records[i][0],
                 "name":records[i][1],
                 "category": records[i][2],
-                "description": "，".join(records[i][3].split("，")[:2]),
+                "description": "，".join(records[i][3].split("，")[:]),
                 "address": records[i][4],
                 "transport": records[i][5],
                 "mrt": records[i][6],
