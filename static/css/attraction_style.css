@@ -67,12 +67,13 @@ body {
     position:relative;
     margin-left: 15px;
     margin-right: 15px;
-    flex: none;
+    /* flex: none; */
     width: 540px;
     height: 400px;
     overflow: hidden;
-
-
+    justify-content: center;
+    align-items:center;
+    display: flex;
 }
 #list {
     position: absolute;
@@ -84,17 +85,27 @@ body {
     float: left;
     width: 540px;
     height: 400px;
-
 }
+.btndiv{    
 
-.btnright{       
-    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    /* position: absolute;
     top: 50%;
-    left: 92%;
+    left: 0%;
+    height: 20px; */
+}
+.btnright{       
+    /* position: absolute; */
+    /* left: 92%; */
+    flex: none;
+
     opacity: 0.75;
     width: 36px;
     height: 36px;
     z-index: 5;
+    justify-content:left;
 
     
 }
@@ -103,9 +114,10 @@ body {
     height: 100%;
 }
 .btnleft{
-    top: 50%;
-    left: 1%;
-    position: absolute;
+    /* position: absolute; */
+    /* left: 1%; */
+    flex: none;
+
     opacity: 0.75;
     width: 36px;
     height: 36px;
@@ -452,7 +464,7 @@ body {
             margin: 0 ;
         }
         .inforright{
-            /* margin-left: 10px; */
+            margin-left: 10px;
             margin-right: 10px;
             width: 98%;
         }
@@ -463,10 +475,8 @@ body {
         .information5{
             height: auto;
         }
-        .btnright {
-            left: 80%;
-        }
-        .btnleft {
-            left: 13%;
-        }
+        /* .btndiv {
+            left: 10%;
+            width: 79%;
+        } */
     }      

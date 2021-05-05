@@ -16,7 +16,7 @@ function loadapi() {
         return response.json();
     }).then(function (result) {
         data = result.data;
-        console.log(data)
+        // console.log(data)
         addbody();
     });
 }
@@ -27,11 +27,11 @@ function addbody(){
     let imhlength=data.images[0].split('http://').length
     // console.log("圖片數量",imhlength-1)
     webimgcount=imhlength-1+2
-    console.log(webimgcount)
+    // console.log(webimgcount)
 
     //設定List寬度
     list.style.width=540*(webimgcount)+ 'px';
-    console.log("list.style.width",list.style.width)
+    // console.log("list.style.width",list.style.width)
 
     //最後一張
     let listimg_end = document.createElement("img")
@@ -87,7 +87,7 @@ window.onload = function() {
         let newLeft = parseInt(list.style.left) + offset;
         list.style.left = newLeft + 'px';
         maxleft=-540*(webimgcount-2)
-        console.log(maxleft)
+        // console.log(maxleft)
         if (newLeft > -540) {
             list.style.left = maxleft + 'px';
         }
