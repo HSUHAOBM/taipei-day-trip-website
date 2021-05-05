@@ -22,7 +22,13 @@ def index():
     return render_template("index.html")
 @app.route("/attraction/<id>")
 def attraction(id):
-    return render_template("attraction.html")
+    IdCount=UseData.CheakIdCount()
+    attractionId=int(id)
+    if attractionId<=int(IdCount) and attractionId>=1:
+        return render_template("attraction.html")
+    else:
+        abort(400)
+
 @app.route("/booking")
 def booking():
     return render_template("booking.html")

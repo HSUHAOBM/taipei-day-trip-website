@@ -47,10 +47,14 @@ function addbody() {
         div_imgbox.className = "imgbox";
         div_box.appendChild(div_imgbox);
 
+        let a_href=document.createElement("a")
+        a_href.href="/attraction/"+String(data.data[i].id)
+        div_imgbox.appendChild(a_href)
+        
         let img_imgboximg = document.createElement("img")
         img_imgboximg.className = "imgboximg";
         img_imgboximg.src = "http://" + data.data[i].images[0].split('http://')[1].split(',')[0];
-        div_imgbox.appendChild(img_imgboximg);
+        a_href.appendChild(img_imgboximg);
         // name
         let div_text1 = document.createElement("div")
         div_text1.className = "text1";
