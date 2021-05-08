@@ -106,6 +106,7 @@ body {
     height: 36px;
     z-index: 5;
     justify-content:left;
+    cursor: pointer;
 
     
 }
@@ -122,6 +123,7 @@ body {
     width: 36px;
     height: 36px;
     z-index: 5;
+    cursor: pointer;
 
 }
 .btnleft>img{   
@@ -130,6 +132,33 @@ body {
     width: 100%;
     height: 100%;
 }
+
+
+#buttons span {
+    margin-right: 5px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+}
+
+#buttons {
+    display: flex;
+
+    position: absolute;
+    bottom: 20px;
+    z-index: 2;
+    /* height: 10px;
+    width: 100px;
+    left: 250px; */
+
+}
+#buttons .on {
+    background: #f3dcd3;
+}
+
 .inforright{
     justify-content:center;
 
@@ -257,11 +286,30 @@ body {
     align-items: center;
     color: #666666;
 }
+label{
+    margin-right: 15px;
+    /* line-height: 32px; */
+}
 .rightend4>input{
     height: 22px;
+    width: 22px;
     align-items: center;
+    margin-right:5px;
+    border-radius: 50%;
+    transition: 0.3s all linear;
+    background:#fff;
+
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
 }
+
+.rightend4>input:checked{
+    border: 2px solid #fff;
+    background: #448899;}
+
 
 
 .rightend5{       

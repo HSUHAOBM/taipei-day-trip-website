@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="warp">
         <div class="head">
             <!-- <div class="headleft" onclick="location.href='/'">台北一日遊</div> -->
@@ -28,11 +27,14 @@
             <div class="inforleft">
                 <div id="list" style="left:-540px;"></div>
 
-                
+
                 <div class="btndiv">
-                    <div  id="prev" class="btnleft"><img src="/img/btn.png" /></div>
-                    <div  id="next" class="btnright"><img src="/img/btn.png" /></div>
+                    <div id="prev" class="btnleft" onclick="prev()"><img src="/img/btn.png" /></div>
+                    <div id="next" class="btnright" onclick="next()"><img src="/img/btn.png" /></div>
                 </div>
+                <div id="buttons">
+                </div>
+
             </div>
             <div class="inforright">
                 <div class="righttop"></div>
@@ -46,20 +48,19 @@
                     </div>
                     <div class="rightend4">
                         <a class="right4inputtitle">選擇時間：</a>
-                        <input  class="right4input" type="radio" name="color" value="新台幣 2000元" checked onclick="displayResult(this.value)"> <a>上半場</a>
-                        <input  class="right4input" type="radio" name="color" value="新台幣 2500元" onclick="displayResult(this.value)"><a> 下半場</a>
+                        <input class="right4input" type="radio" name="color" value="新台幣 2000元" checked
+                            onclick="displayResult(this.value)"> <label>上半場</label>
+                        <input class="right4input" type="radio" name="color" value="新台幣 2500元"
+                            onclick="displayResult(this.value)"><label> 下半場</label>
                     </div>
-                    <div class="rightend5">                       
+                    <div class="rightend5">
                         <a>導覽費用：</a>
                         <div class="rightend5div">新台幣 2000 元</div>
                     </div>
                     <button class="rightend6" type="submit">開始預訂行程</button>
                 </div>
-
             </div>
-
         </div>
-
         <div class="information">
             <div class="information1"></div>
             <div class="information2"></div>
@@ -68,9 +69,7 @@
             <div class="information5"></div>
 
         </div>
-
         <div class="footer">COPYRIGHT © 2021 台北一日遊</div>
-
     </div>
     <script src="/js/attractionscript.js"></script>
 
