@@ -103,7 +103,7 @@ def usercheck():
                 username = data['name']
                 #檢查輸入是否為空白
                 if not useremail.strip() or not userpassword.strip() or not username.strip():
-                    return {"data": None}
+                    return {"error": True, "message": "檢查輸入是否為空白!"}
                 else:    
                     state = UseData.Registered(username, useremail, userpassword)
                     data = {}
@@ -112,7 +112,7 @@ def usercheck():
             if(data.get('name') == None and request.method == "PATCH"):
                 #檢查輸入是否為空白
                 if not useremail.strip() or not userpassword.strip():
-                    return {"data": None}
+                    return {"error": True, "message": "檢查輸入是否為空白!"}
                 else:
                     state, DBloaddata = UseData.Signin(useremail, userpassword)
                     if(state.get('ok')):
