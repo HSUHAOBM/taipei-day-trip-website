@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>台北一日遊</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- <link href="style.css" rel="stylesheet" type="text/css" media="all" /> -->
+    <link href="/css/userbox.css" rel="stylesheet" type="text/css" media="all" />
 
 
 </head>
 
-<body>        
+<body>
+    <div id="hidebg" onClick="userboxhide()"></div>
     <div class="warp">
         <div class="head">
             <!-- <div class="headleft" onclick="location.href='/'">台北一日遊</div> -->
@@ -20,43 +21,60 @@
             <div class="headcenter"></div>
             <div class="headright">
                 <div>預定行程</div>
-                <div>登入/註冊</div>
+                <div class="loginout" onClick="userboxshow();" style="cursor: pointer;">登入/註冊</div>
             </div>
         </div>
         <div class="welcome">
             <div>
-            <div class="slogan">
-                <div class="slogantext">
-                    <a class="slogantext1">輕鬆享受台北一日悠閒</a>
-                    <a class="slogantext2">探索每個角落，體驗城市的深度旅遊行程</a>
-                </div>
-                <div class="search">
-                    <input type="text" class="searchtext" placeholder=" 輸入景點名稱查詢" name="keyword">
+                <div class="slogan">
+                    <div class="slogantext">
+                        <a class="slogantext1">輕鬆享受台北一日悠閒</a>
+                        <a class="slogantext2">探索每個角落，體驗城市的深度旅遊行程</a>
+                    </div>
+                    <div class="search">
+                        <input type="text" class="searchtext" placeholder=" 輸入景點名稱查詢" name="keyword">
 
-                    <button onclick="addkeydata()" class="searchbtn">
+                        <button onclick="addkeydata()" class="searchbtn">
                         <input type="button" class="searchbox" />
                         <img class="searchimg" src="img/search.png" />
                         <!-- <img class="searchimg" src="search.png" /> -->
                     </button>
 
+                    </div>
                 </div>
-            </div>
-            <div style="flex:auto;"></div>
-            <div class="welcomeimg">
-            <img src="img/welcome.png" /></div>            
-            <!-- <img src="welcome.png" /></div> -->
+                <div style="flex:auto;"></div>
+                <div class="welcomeimg">
+                    <img src="img/welcome.png" /></div>
+                <!-- <img src="welcome.png" /></div> -->
 
-        </div>
+            </div>
         </div>
         <script src="js/script.js"></script>
         <!-- <script src="script.js"></script> -->
 
         <div class="footer">COPYRIGHT © 2021 台北一日遊</div>
-    </div>
 
     </div>
+    <div class="userbox">
+        <div class="userboxtop"></div>
+        <div class="closebtn" onclick="userboxhide()"><img src="/img/closebtn.png" /></div>
+
+        <a class="texttop">登入會員帳號</a>
+        <form action="" method="post" id="signup">
+            <input hidden class=" inputtextname " type="text" placeholder=" 輸入姓名 " name="username " />
+            <input required class="inputtextemail " type="email" placeholder=" 輸入電子郵件 " name="useremail " />
+            <input required class="inputtextpassword " type="password" placeholder=" 輸入密碼4-12碼 " required pattern="[0-9a-zA-Z]{4,12}" name="userpassword " />
+            <!-- <button class="inputbutton " onClick=connect()>登入</button> -->
+            <input class="inputbutton" type="submit" value="登入 ">
+
+        </form>
+        <a class="textpoint"></a>
+        <a class="textend " onClick=useronclick();>還沒有帳戶？點此註冊</a>
+    </div>
+    </div>
+
+    <script src="/js/memberuser.js"></script>
 
 </body>
 
 </html>
-
