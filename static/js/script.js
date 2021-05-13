@@ -1,4 +1,3 @@
-
 var div_main = document.createElement("div");
 div_main.className = "main";
 var div_content = document.createElement("div");
@@ -17,21 +16,20 @@ var data;
 
 //讀取資料
 function loadapi() {
-    data=null;
+    data = null;
     let src = "http://3.18.249.2:3000/api/attractions?page=" + String(page) + "&keyword=" + keyword;
-    fetch(src).then(function (response) {
+    fetch(src).then(function(response) {
         return response.json();
-    }).then(function (result) {
-        if (result.error){
+    }).then(function(result) {
+        if (result.error) {
             alert("無資料");
             page = 0;
             keyword = "";
             loadapi();
+        } else {
+            data = result;
+            addbody();
         }
-        else{
-        data = result;
-        addbody();
-    }
     });
 }
 
@@ -47,10 +45,10 @@ function addbody() {
         div_imgbox.className = "imgbox";
         div_box.appendChild(div_imgbox);
 
-        let a_href=document.createElement("a")
-        a_href.href="/attraction/"+String(data.data[i].id)
+        let a_href = document.createElement("a")
+        a_href.href = "/attraction/" + String(data.data[i].id)
         div_imgbox.appendChild(a_href)
-        
+
         let img_imgboximg = document.createElement("img")
         img_imgboximg.className = "imgboximg";
         img_imgboximg.src = "http://" + data.data[i].images[0].split('http://')[1].split(',')[0];
@@ -79,19 +77,19 @@ function addbody() {
 
     }
     nextpage = data.nextpage
-    console.log("nextpage", nextpage)
-    checkonload=true
+        // console.log("nextpage", nextpage)
+    checkonload = true
 
 }
 
 //畫面讀取初始
-window.onload = function () {
+window.onload = function() {
     loadapi();
 }
 
 
 //功能1-畫面捲動監聽
-window.addEventListener('scroll', function () {
+window.addEventListener('scroll', function() {
     let webwarp = document.querySelector('.warp');
     if (10 > (webwarp.scrollHeight - window.pageYOffset - window.innerHeight) & checkonload == true & nextpage != null) {
         checkonload = false;

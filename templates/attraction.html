@@ -6,11 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/attraction_style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/userbox.css" rel="stylesheet" type="text/css" media="all" />
+
 
     <title>Attraction</title>
 </head>
 
 <body>
+    <div id="hidebg" onClick="userboxhide()"></div>
+
     <div class="warp">
         <div class="head">
             <!-- <div class="headleft" onclick="location.href='/'">台北一日遊</div> -->
@@ -20,7 +24,7 @@
             <div class="headcenter"></div>
             <div class="headright">
                 <div>預定行程</div>
-                <div>登入/註冊</div>
+                <div class="loginout" onClick="userboxshow();" style="cursor: pointer;">登入/註冊</div>
             </div>
         </div>
         <div class="welcome">
@@ -48,10 +52,8 @@
                     </div>
                     <div class="rightend4">
                         <a class="right4inputtitle">選擇時間：</a>
-                        <input class="right4input" type="radio" name="color" value="新台幣 2000元" checked
-                            onclick="displayResult(this.value)"> <label>上半場</label>
-                        <input class="right4input" type="radio" name="color" value="新台幣 2500元"
-                            onclick="displayResult(this.value)"><label> 下半場</label>
+                        <input class="right4input" type="radio" name="color" value="新台幣 2000元" checked onclick="displayResult(this.value)"> <label>上半場</label>
+                        <input class="right4input" type="radio" name="color" value="新台幣 2500元" onclick="displayResult(this.value)"><label> 下半場</label>
                     </div>
                     <div class="rightend5">
                         <a>導覽費用：</a>
@@ -71,7 +73,26 @@
         </div>
         <div class="footer">COPYRIGHT © 2021 台北一日遊</div>
     </div>
-    <script src="/js/attractionscript.js"></script>
+    <div class="userbox">
+        <div class="userboxtop"></div>
+        <div class="closebtn" onclick="userboxhide()"><img src="/img/closebtn.png" /></div>
+
+        <a class="texttop">登入會員帳號</a>
+        <form action="" method="post" id="signup">
+            <input hidden class=" inputtextname " type="text" placeholder=" 輸入姓名 " name="username " />
+            <input required class="inputtextemail " type="email" placeholder=" 輸入電子郵件 " name="useremail " />
+            <input required class="inputtextpassword " type="password" placeholder=" 輸入密碼4-12碼 " required pattern="[0-9a-zA-Z]{4,12}" name="userpassword " />
+            <!-- <button class="inputbutton " onClick=connect()>登入</button> -->
+            <input class="inputbutton" type="submit" value="登入 ">
+
+        </form>
+        <a class="textpoint"></a>
+        <a class="textend " onClick=useronclick();>還沒有帳戶？點此註冊</a>
+    </div>
+    </div>
+
+    <script src="/js/attractionscript.js "></script>
+    <script src="/js/memberuser.js "></script>
 
 </body>
 
