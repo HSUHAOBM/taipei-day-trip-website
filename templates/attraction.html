@@ -23,7 +23,7 @@
             <!-- <a class="headleft" href='/'>台北一日遊</a> -->
             <div class="headcenter"></div>
             <div class="headright">
-                <div>預定行程</div>
+                <div style="cursor:pointer;" class="bookingbtn" onclick="userboxshow();"> 預定行程</div>
                 <div class="loginout" onClick="userboxshow();" style="cursor: pointer;">登入/註冊</div>
             </div>
         </div>
@@ -46,32 +46,35 @@
                 <div class="rightend">
                     <div class="rightend1">訂購導覽行程</div>
                     <div class="rightend2">以此景點為中心的一日行程，帶您探索城市角落故事</div>
-                    <div class="rightend3">
-                        <a>選擇日期：</a>
-                        <input type="date" value="2021-01-01" min="2021-01-01" max="2021-12-31">
-                    </div>
-                    <div class="rightend4">
-                        <a class="right4inputtitle">選擇時間：</a>
-                        <input class="right4input" type="radio" name="color" value="新台幣 2000元" checked onclick="displayResult(this.value)"> <label>上半場</label>
-                        <input class="right4input" type="radio" name="color" value="新台幣 2500元" onclick="displayResult(this.value)"><label> 下半場</label>
-                    </div>
-                    <div class="rightend5">
-                        <a>導覽費用：</a>
-                        <div class="rightend5div">新台幣 2000 元</div>
-                    </div>
-                    <button class="rightend6" type="submit">開始預訂行程</button>
+                    <form action="" method="post" id="order">
+                        <div class="rightend3">
+                            <a>選擇日期：</a>
+                            <input type="date" min="2021-01-01" max="2021-12-31" id="date" name="date" required>
+                        </div>
+                        <div class="rightend4">
+                            <a class="right4inputtitle">選擇時間：</a>
+                            <input class="right4input" type="radio" name="time" alt="新台幣 2000元" value="morning" checked required onclick="displayResult(this.alt) "> <label>上半場</label>
+                            <input class="right4input" type="radio" name="time" alt="新台幣 2500元" value="afternoon" onclick="displayResult(this.alt) "><label> 下半場</label>
+                        </div>
+                        <div class="rightend5 ">
+                            <a>導覽費用：</a>
+                            <div class="rightend5div ">新台幣 2000 元</div>
+                        </div>
+                        <input class="rightend6" type="submit" value="開始預訂行程 ">
+
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="information">
-            <div class="information1"></div>
-            <div class="information2"></div>
-            <div class="information3"></div>
-            <div class="information4"></div>
-            <div class="information5"></div>
+        <div class="information ">
+            <div class="information1 "></div>
+            <div class="information2 "></div>
+            <div class="information3 "></div>
+            <div class="information4 "></div>
+            <div class="information5 "></div>
 
         </div>
-        <div class="footer">COPYRIGHT © 2021 台北一日遊</div>
+        <div class="footer ">COPYRIGHT © 2021 台北一日遊</div>
     </div>
     <div class="userbox">
         <div class="userboxtop"></div>
@@ -90,7 +93,6 @@
         <a class="textend " onClick=useronclick();>還沒有帳戶？點此註冊</a>
     </div>
     </div>
-
     <script src="/js/attractionscript.js "></script>
     <script src="/js/memberuser.js "></script>
 

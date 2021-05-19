@@ -135,3 +135,7 @@ form {
     color: #f25252;
     margin-bottom: 10px;
 }
+
+input {
+    padding: 10px;
+}

@@ -1,7 +1,11 @@
+from dns.rdatatype import NULL
 from flask import *
-from custom_models import UseData
+from requests.api import get
+from custom_models import UseData,apianalysis
 
 from flask_cors import CORS
+
+getdata={}
 
 app = Flask(
     __name__,
@@ -17,6 +21,12 @@ app.config['SECRET_KEY'] = 'laowangaigebi'  # key
 @app.route("/")
 def index():
     return render_template("index.html")
+@app.route("/booking")
+def booking():
+    return render_template("booking.html")
+@app.route("/thankyou")
+def thankyou():     
+    return render_template("thankyou.html")
 
 
 @app.route("/attraction/<id>")
@@ -29,14 +39,40 @@ def attraction(id):
         abort(400)
 
 
-@app.route("/booking")
-def booking():
-    return render_template("booking.html")
+
+@app.route("/api/booking", methods=["POST", "GET", "PATCH", "DELETE"])
+def apibooking():
+    useremail = session.get('useremail')  
+    username = session.get('username')  
+    userid = session.get('id') 
+    if useremail and username and userid:
+        if request.method == "GET":
+            return Response(json.dumps(getdata, sort_keys=False), mimetype='application/json')
+
+        if request.method == "POST":
+            orderdata = request.get_json()
+            id = orderdata['attractionId']
+            apigetdata=apianalysis.apiget(id)
+            getdata["data"]={}
+            getdata["data"]["attraction"]=apigetdata
+            getdata["data"]["date"]=orderdata['date']
+            getdata["data"]["time"]=orderdata['time']
+            getdata["data"]["price"]=orderdata['price']
+            if getdata!=None:
+                return { "ok": True}
+            if getdata==None:
+                return abort(400)
+            else:
+                return abort(500)
 
 
-@app.route("/thankyou")
-def thankyou():
-    return render_template("thankyou.html")
+        if request.method == "DELETE":
+            getdata.clear()
+            return {"ok": True}
+    else:
+        return{"error": True, "message": "未登入"} ,403
+
+
 
 
 # http://127.0.0.1:3000/api/attractions?page=?&keyword=?
@@ -56,12 +92,12 @@ def getbaseapi():
 
 @app.errorhandler(400)
 def page_400(error):
-    return Response(json.dumps({"error": True, "message": "自訂的錯誤訊息"}, sort_keys=False), mimetype='application/json'), 400
+    return Response(json.dumps({"error": True, "message": "建立錯誤"}, sort_keys=False), mimetype='application/json'), 400
 
 
 @app.errorhandler(500)
 def page_500(error):
-    return Response(json.dumps({"error": True, "message": "自訂的錯誤訊息"}, sort_keys=False), mimetype='application/json'), 500
+    return Response(json.dumps({"error": True, "message": "伺服器內部錯誤"}, sort_keys=False), mimetype='application/json'), 500
 
 
 @app.route("/api/attraction/<attractionId>")
@@ -131,3 +167,5 @@ def usercheck():
 app.run(host="0.0.0.0", port=3000)
 # app.run(port=3000, debug=True)
 # app.run(port=3000)
+
+

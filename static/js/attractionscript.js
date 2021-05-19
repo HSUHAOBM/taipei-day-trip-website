@@ -4,20 +4,20 @@ url = url.split("/")
 url = url[url.length - 1]
 
 var list = document.getElementById('list');
-var webimgcount = 0;//web img coun +2
-var imhlength = 0;//web img
+var webimgcount = 0; //web img coun +2
+var imhlength = 0; //web img
 var buttons = document.getElementById('buttons').getElementsByTagName('span');
-var index = 1;//圖片初始狀態
+var index = 1; //圖片初始狀態
+let data = null;
 
 
 function loadapi() {
-    data = null;
     // let src = "http://3.18.249.2:3000/api/attraction/"+Number(1)
     let src = "http://3.18.249.2:3000/api/attraction/" + Number(url)
 
-    fetch(src).then(function (response) {
+    fetch(src).then(function(response) {
         return response.json();
-    }).then(function (result) {
+    }).then(function(result) {
         data = result.data;
         // console.log(data)
         addbody();
@@ -30,7 +30,7 @@ function addbody() {
     imhlength = (data.images[0].split('http://').length) - 1
     console.log("圖片數量", imhlength)
     webimgcount = imhlength + 2
-    // console.log(webimgcount)
+        // console.log(webimgcount)
 
     //設定List寬度
     list.style.width = 540 * (webimgcount) + 'px';
@@ -40,7 +40,7 @@ function addbody() {
     let listimg_end = document.createElement("img")
     listimg_end.src = "http://" + data.images[0].split('http://')[imhlength].split(',')[0]
     list.appendChild(listimg_end)
-    //中間1~end
+        //中間1~end
     for (let i = 1; i < imhlength + 1; i++) {
         // console.log("i",i)
         // console.log("http://" + data.images[0].split('http://')[i].split(',')[0])
@@ -57,7 +57,7 @@ function addbody() {
     let buttons = document.getElementById('buttons')
     let spanbox = document.createElement("span");
     spanbox.id = 1
-    spanbox.onclick = function () {
+    spanbox.onclick = function() {
         let clickIndex = parseInt(this.getAttribute('id'));
         // console.log("clickIndex",clickIndex);
         gotoimg(clickIndex);
@@ -70,7 +70,7 @@ function addbody() {
         // console.log(i)
         let spanbox = document.createElement("span");
         spanbox.id = i + 2
-        spanbox.onclick = function () {
+        spanbox.onclick = function() {
             let clickIndex = parseInt(this.getAttribute('id'));
             // console.log("clickIndex",clickIndex)
             gotoimg(clickIndex);
@@ -106,9 +106,10 @@ function displayResult(text) {
 }
 
 
-window.onload = function () {
+window.onload = function() {
     loadapi()
 }
+
 function prev() {
     index -= 1;
     if (index < 1) {
@@ -117,6 +118,7 @@ function prev() {
     buttonsShow();
     animate(540);
 }
+
 function next() {
     index += 1;
     if (index > imhlength) {
@@ -125,11 +127,12 @@ function next() {
     buttonsShow();
     animate(-540);
 }
+
 function animate(offset) {
     let newLeft = parseInt(list.style.left) + offset;
     list.style.left = newLeft + 'px';
     maxleft = -540 * (webimgcount - 2)
-    // console.log(maxleft)
+        // console.log(maxleft)
     if (newLeft > -540) {
         list.style.left = maxleft + 'px';
     }
@@ -157,3 +160,50 @@ function buttonsShow() {
     buttons[index - 1].className = 'on';
 }
 
+
+let orderform = document.getElementById('order');
+orderform.addEventListener('submit', function(event) {
+    var orderformdata = new FormData(orderform);
+    let formdata = {};
+    event.preventDefault();
+
+
+    if (orderformdata.get("time") == "morning") {
+        formdata = {
+            "attractionId": url,
+            "date": orderformdata.get("date"),
+            "time": orderformdata.get("time"),
+            "price": 2000
+        }
+    }
+    if (orderformdata.get("time") == "afternoon") {
+        formdata = {
+            "attractionId": url,
+            "date": orderformdata.get("date"),
+            "time": orderformdata.get("time"),
+            "price": 2500
+        }
+    }
+
+    let = urlbook = "/api/booking";
+    console.log(formdata);
+    fetch(urlbook, {
+        method: "POST",
+        body: JSON.stringify(formdata),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(function(res) {
+        return res.json();
+    }).then(function(result) {
+        console.log(result);
+        if (result.error) {
+            userboxshow();
+        }
+        if (result.ok) {
+            gobooking()
+        }
+
+    })
+
+})
