@@ -2,8 +2,8 @@ import mysql.connector
 DBhost='localhost'        
 DBdatabase='learn_pon'#資料庫
 DBuser='root'         #帳號
-DBpassword='HsuanHao_0610'     #密碼
-# DBpassword='root'     #密碼
+# DBpassword='HsuanHao_0610'     #密碼
+DBpassword='root'     #密碼
 
 
 #旅遊數據數量
