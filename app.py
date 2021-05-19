@@ -1,4 +1,3 @@
-from dns.rdatatype import NULL
 from flask import *
 from requests.api import get
 from custom_models import UseData,apianalysis
@@ -71,6 +70,7 @@ def apibooking():
             return {"ok": True}
     else:
         return{"error": True, "message": "未登入"} ,403
+        # return render_template("booking.html")
 
 
 
