@@ -58,7 +58,6 @@ function clearapi() {
         data = result;
         console.log(data)
         if (data.ok) {
-            notaipdata()
             window.location.reload();
 
         }
