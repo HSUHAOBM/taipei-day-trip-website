@@ -1,5 +1,7 @@
 let textcontrol = true;
 let logbtn = document.querySelector('.loginout');
+let bookingbtn = document.querySelector('.bookingbtn');
+
 let urlapi = "/api/user";
 
 
@@ -91,7 +93,8 @@ form.addEventListener('submit', function(event) {
             method: methodtype,
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "test": "1234567489"
             }
         }).then(res => {
             return res.json();
@@ -104,12 +107,12 @@ form.addEventListener('submit', function(event) {
             };
             if (result.ok) {
                 if (username == "") {
-                    alert("登入成功")
+                    // alert("登入成功")
                     logoin();
                     window.location.reload();
                 }
                 if (username != "") {
-                    alert("註冊成功")
+                    // alert("註冊成功")
                     textcontrol = !textcontrol
                     window.location.reload();
                 }
@@ -120,14 +123,25 @@ form.addEventListener('submit', function(event) {
 
 });
 
+function gobooking() {
+    location.href = '/booking'
+}
+
+function goindex() {
+    location.href = '/'
+}
+
 //成功 登入 
 function logoin() {
+    bookingbtn.onclick = gobooking;
     logbtn.onclick = logout;
     logbtn.textContent = "登出";
 }
 
 //成功 登出 
 function logout() {
+    bookingbtn.onclick = userboxshow;
+
     logbtn.onclick = userboxshow;
     logbtn.textContent = "登入 / 註冊";
     fetch(urlapi, {
@@ -137,7 +151,7 @@ function logout() {
     }).then(function(result) {
         console.log(result);
         if (result.ok) {
-            alert("成功登出")
+            // alert("成功登出")
             window.location.reload();
         }
     })
@@ -151,10 +165,17 @@ function checklogstate() {
     }).then(function(res) {
         return res.json();
     }).then(function(result) {
-        console.log(result);
+        // console.log(result);
+        // console.log(result.data.name);
+
         if (result.data != null) {
             logoin();
         }
+        if (document.querySelector('.welcometext')) {
+            document.querySelector('.welcometext').textContent = "你好，" + result.data.name + "， 待預定的行程如下 ";
+        }
+
+
     })
 }
 checklogstate();

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/booking_style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/userbox.css" rel="stylesheet" type="text/css" media="all" />
+
+
+    <title>Attraction</title>
+</head>
+
+<body>
+    <div id="hidebg" onClick="userboxhide()"></div>
+
+    <div class="warp">
+        <div class="head">
+            <!-- <div class="headleft" onclick="location.href='/'">台北一日遊</div> -->
+            <a class="headleft" href='/'>台北一日遊</a>
+
+            <!-- <a class="headleft" href='/'>台北一日遊</a> -->
+            <div class="headcenter"></div>
+            <div class="headright">
+                <div style="cursor:pointer;" class="bookingbtn" onclick="userboxshow();"> 預定行程</div>
+                <div class="loginout" onClick="userboxshow();" style="cursor: pointer;">登入/註冊</div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="maintop">
+                <a class="welcometext">你好，來賓，待預定的行程如下：</a>
+                <a class="infortext" hidden>目前沒有任何待預訂的行程</a>
+                <div class="order">
+                    <div class="left">
+                        <div class="leftimg">
+                            <img src="" title="123"></div>
+                    </div>
+                    <div class="righttext ">
+                        <div class="clearbtn " onclick="clearapi()"><img src="/img/clear.png " title="刪除行程 " /></div>
+                        <div class="righttext1 "></div>
+                        <div class="righttext2 ">
+                            <a>日期：</a>
+                            <div></div>
+                        </div>
+                        <div class="righttext3 ">
+                            <a>時間：</a>
+                            <div></div>
+                        </div>
+                        <div class="righttext4 ">
+                            <a>費用：</a>
+                            <div></div>
+                        </div>
+                        <div class="righttext5 ">
+                            <a>地點：</a>
+                            <div></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <hr id="hr1" hidden>
+            <div class="maincenter" hidden>
+                <div class="maincentertext1 ">您的聯絡資訊</div>
+                <div class="maincenterinput1 ">
+                    <a>聯絡姓名：</a>
+                    <input type="text "></div>
+                <div class="maincenterinput2 ">
+                    <a>聯絡信箱：</a>
+                    <input type="email "></div>
+                <div class="maincenterinput3 ">
+                    <a>手機號碼：</a>
+                    <input type="text "></div>
+
+                <div class="maincentertext2 ">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</div>
+
+            </div>
+            <hr id="hr2" hidden>
+            <div class="maincenter2" hidden>
+                <div class="maincentertext1 ">信用卡付款資訊</div>
+                <div class="maincenterinput1 ">
+                    <a>卡片號碼：</a>
+                    <input type="text " maxlength="16 " placeholder="**** **** **** **** "></div>
+                <div class="maincenterinput2 ">
+                    <a>過期時間：</a>
+                    <input maxlength='5' placeholder="MM/YY " type="text "></div>
+
+                <div class="maincenterinput3 ">
+                    <a>驗證密碼：</a>
+                    <input type="text " placeholder="CVV "></div>
+            </div>
+            <hr id="hr3" hidden>
+            <div class="mainfinsh">
+                <a>總價：新台幣 2000 元</a>
+                <button>確認訂購並付款</button>
+            </div>
+
+        </div>
+        <div class=" footer ">COPYRIGHT © 2021 台北一日遊</div>
+    </div>
+    <div class="userbox">
+        <div class="userboxtop"></div>
+        <div class="closebtn" onclick="userboxhide()"><img src="/img/closebtn.png" /></div>
+
+        <a class="texttop">登入會員帳號</a>
+        <form action="" method="post" id="signup">
+            <input hidden class=" inputtextname " type="text" placeholder=" 輸入姓名 " name="username " />
+            <input required class="inputtextemail " type="email" placeholder=" 輸入電子郵件 " name="useremail " />
+            <input required class="inputtextpassword " type="password" placeholder=" 輸入密碼4-12碼 " required pattern="[0-9a-zA-Z]{4,12}" name="userpassword " />
+            <!-- <button class="inputbutton " onClick=connect()>登入</button> -->
+            <input class="inputbutton" type="submit" value="登入 ">
+
+        </form>
+        <a class="textpoint"></a>
+        <a class="textend " onClick=useronclick();>還沒有帳戶？點此註冊</a>
+    </div>
+    </div>
+
+    <script src="/js/memberuser.js "></script>
+    <script src="/js/booking.js "></script>
+
+
+</body>
+
+</html>

@@ -1,17 +1,18 @@
 body {
     margin: 0px;
-    overflow:visible;
+    overflow: visible;
 }
 
-.head{
+.head {
     width: 1200px;
     height: 44px;
     margin: 0 auto;
     display: flex;
     padding-top: 10px;
-    align-items:center;
+    align-items: center;
 }
-.headleft{
+
+.headleft {
     flex: none;
     width: 150px;
     height: 34px;
@@ -21,36 +22,35 @@ body {
     font-size: 30px;
     line-height: 34px;
     color: #448899;
-    text-decoration:none;
+    text-decoration: none;
 }
-.headcenter{
+
+.headcenter {
     flex: auto;
 }
-.headright{
-    
-    justify-content:left;
+
+.headright {
+    justify-content: left;
     flex: none;
     width: 175px;
     height: 34px;
     display: flex;
-
 }
-.headright>div{
+
+.headright>div {
     flex: none;
     height: 34px;
     width: 84px;
     font-family: Noto Sans TC;
     font-style: normal;
     font-size: 16px;
-
     border-radius: 0px;
-    
     line-height: 34px;
     color: #a88e8e;
-    text-align:center
+    text-align: center
 }
 
-.welcome{
+.welcome {
     width: 1200px;
     height: 400px;
     margin: 0 auto;
@@ -59,12 +59,11 @@ body {
     flex-wrap: wrap;
     overflow: hidden;
     justify-content: center;
-    align-items:center;
-
+    align-items: center;
 }
 
-.inforleft{
-    position:relative;
+.inforleft {
+    position: relative;
     margin-left: 15px;
     margin-right: 15px;
     /* flex: none; */
@@ -72,22 +71,24 @@ body {
     height: 400px;
     overflow: hidden;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     display: flex;
 }
+
 #list {
     position: absolute;
     z-index: 1;
     /* width: 2160px;  */
     height: 400px;
 }
+
 #list img {
     float: left;
     width: 540px;
     height: 400px;
 }
-.btndiv{    
 
+.btndiv {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -96,43 +97,41 @@ body {
     left: 0%;
     height: 20px; */
 }
-.btnright{       
+
+.btnright {
     /* position: absolute; */
     /* left: 92%; */
     flex: none;
-
     opacity: 0.75;
     width: 36px;
     height: 36px;
     z-index: 5;
-    justify-content:left;
+    justify-content: left;
     cursor: pointer;
-
-    
 }
-.btnright>img{
+
+.btnright>img {
     width: 100%;
     height: 100%;
 }
-.btnleft{
+
+.btnleft {
     /* position: absolute; */
     /* left: 1%; */
     flex: none;
-
     opacity: 0.75;
     width: 36px;
     height: 36px;
     z-index: 5;
     cursor: pointer;
-
 }
-.btnleft>img{   
-    transform:scaleX(-1);
+
+.btnleft>img {
+    transform: scaleX(-1);
     opacity: 0.75;
     width: 100%;
     height: 100%;
 }
-
 
 #buttons span {
     margin-right: 5px;
@@ -146,22 +145,20 @@ body {
 
 #buttons {
     display: flex;
-
     position: absolute;
     bottom: 20px;
     z-index: 2;
     /* height: 10px;
     width: 100px;
     left: 250px; */
-
 }
+
 #buttons .on {
     background: #f3dcd3;
 }
 
-.inforright{
-    justify-content:center;
-
+.inforright {
+    justify-content: center;
     margin-left: 15px;
     margin-right: 15px;
     flex: none;
@@ -169,8 +166,9 @@ body {
     height: 400px;
     margin-top: 20px;
 }
-.righttop{
-    height: 33px;    
+
+.righttop {
+    height: 33px;
     width: 100%;
     font-family: Noto Sans TC;
     font-style: normal;
@@ -179,7 +177,8 @@ body {
     line-height: 24px;
     color: #666666;
 }
-.rightmid{
+
+.rightmid {
     margin-top: 15px;
     width: 100%;
     height: 22px;
@@ -190,20 +189,19 @@ body {
     line-height: 13px;
     color: #666666;
 }
-.rightend{
+
+.rightend {
     width: 100%;
     margin-top: 20px;
     height: 303px;
     background: #E8E8E8;
     border-radius: 5px;
-
-
 }
-.rightend1{   
+
+.rightend1 {
     padding-top: 15px;
     margin-left: 20px;
-    margin-right: 20px;  
-    
+    margin-right: 20px;
     height: 22px;
     font-family: Noto Sans TC;
     font-style: normal;
@@ -214,13 +212,12 @@ body {
     align-items: center;
     color: #666666;
 }
-.rightend2{
+
+.rightend2 {
     margin-top: 15px;
     margin-left: 20px;
-    margin-right: 20px;  
-    
+    margin-right: 20px;
     height: 24px;
-
     font-family: Noto Sans TC;
     font-style: normal;
     font-weight: normal;
@@ -229,20 +226,20 @@ body {
     align-items: center;
     color: #666666;
 }
-.rightend3{
+
+.rightend3 {
     margin-top: 15px;
     margin-left: 20px;
-    margin-right: 20px;  
+    margin-right: 20px;
     height: 35px;
     display: flex;
-
 }
-.rightend3>a{
+
+.rightend3>a {
     flex: none;
     align-items: center;
     width: 81px;
     height: 35px;
-  
     font-family: Noto Sans TC;
     font-style: normal;
     font-weight: bold;
@@ -252,31 +249,30 @@ body {
     align-items: center;
     color: #666666;
 }
-.rightend3>input{
-    flex: none;
 
+.rightend3>input {
+    flex: none;
+    padding: 0px;
     width: 193px;
     height: 35px;
 }
 
-
-.rightend4{    
+.rightend4 {
     margin-top: 15px;
     margin-left: 20px;
-    margin-right: 20px;  
+    margin-right: 20px;
     line-height: 13px;
     height: 22px;
     display: flex;
     flex: none;
     align-items: center;
-
 }
-.right4inputtitle{
+
+.right4inputtitle {
     flex: none;
     align-items: center;
     width: 81px;
     height: 35px;
-  
     font-family: Noto Sans TC;
     font-style: normal;
     font-weight: bold;
@@ -286,45 +282,42 @@ body {
     align-items: center;
     color: #666666;
 }
-label{
+
+label {
     margin-right: 15px;
     /* line-height: 32px; */
 }
-.rightend4>input{
+
+.rightend4>input {
     height: 22px;
     width: 22px;
     align-items: center;
-    margin-right:5px;
+    margin-right: 5px;
     border-radius: 50%;
     transition: 0.3s all linear;
-    background:#fff;
-
-
+    background: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-
 }
 
-.rightend4>input:checked{
+.rightend4>input:checked {
     border: 2px solid #fff;
-    background: #448899;}
+    background: #448899;
+}
 
-
-
-.rightend5{       
+.rightend5 {
     margin-top: 15px;
     margin-left: 20px;
-    margin-right: 20px;  
+    margin-right: 20px;
     display: flex;
-
     height: 22px;
 }
-.rightend5>a{
+
+.rightend5>a {
     flex: none;
     width: 81px;
     height: 35px;
-  
     font-family: Noto Sans TC;
     font-style: normal;
     font-weight: bold;
@@ -334,9 +327,9 @@ label{
     align-items: center;
     color: #666666;
 }
-.rightend5div{
-    flex: none;
 
+.rightend5div {
+    flex: none;
     width: 107px;
     height: 35px;
     font-family: Noto Sans TC;
@@ -345,58 +338,51 @@ label{
     line-height: 35px;
     line-height: 13px;
     /* identical to box height, or 83% */
-
     display: flex;
     align-items: center;
-
     /* Gray 800 */
-
     color: #666666;
 }
-.rightend6{     
+
+.rightend6 {
     justify-content: center;
     margin-top: 25px;
     margin-left: 20px;
-    margin-right: 20px;  
-    
+    margin-right: 20px;
     background: #448899;
-    border-radius: 5px; 
+    border-radius: 5px;
     width: 154px;
     height: 36px;
-
     font-family: Noto Sans TC;
-
     font-size: 19px;
     line-height: 16px;
-
     display: flex;
     align-items: center;
     text-align: center;
-
     color: #FFFFFF;
-
 }
-.information{
-    flex: none;
 
+.information {
+    flex: none;
     padding-top: 77px;
     height: auto;
     width: 1200px;
     margin: 0 auto;
     justify-content: center;
 }
-.information1{
-    width: 100%;
 
+.information1 {
+    width: 100%;
     font-family: Noto Sans TC;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 23px;
-    color: #666666;}
-.information2{
-    height: 32px;
+    color: #666666;
+}
 
+.information2 {
+    height: 32px;
     width: 100%;
     margin-top: 20px;
     font-family: Noto Sans TC;
@@ -407,25 +393,23 @@ label{
     display: flex;
     align-items: center;
     color: #666666;
-    }
-.information3{
-    height: 24px;
+}
 
+.information3 {
+    height: 24px;
     font-family: Noto Sans TC;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 23px;
-
     color: #666666;
     width: 100%;
+}
 
-    }
-.information4{
+.information4 {
     margin-top: 20px;
     width: 100%;
     height: 32px;
-
     width: 100%;
     margin-top: 20px;
     font-family: Noto Sans TC;
@@ -436,95 +420,92 @@ label{
     display: flex;
     align-items: center;
     color: #666666;
+}
 
-    }
-.information5{
+.information5 {
     width: 100%;
     height: 24px;
-
     font-family: Noto Sans TC;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 23px;
-
     color: #666666;
     width: 100%;
-    }
-    .footer{
-        margin-top: 100px;
-        text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: 100px;
+    text-align: center;
+    width: 100%;
+    height: 104px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #757575;
+    font-weight: bold;
+    line-height: 104px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 1200px) {
+    .head {
         width: 100%;
-        height: 104px;
-        font-size: 16px;
-        color: #FFFFFF;
-        background: #757575;
-        font-weight: bold;
-        line-height: 104px;
-    
+        margin: 0;
     }
-    
-    @media screen and (min-width: 500px) and (max-width: 1200px) {
+    .welcome {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+    .inforleft {
+        width: 466px;
+        height: 350px;
+        margin: 0;
+    }
+    .inforright {
+        /* margin-left: 10px; */
+        /* margin-right: 10px; */
+        width: 98%;
+    }
+    .information {
+        width: 90%;
+    }
+}
 
-        .head{
-            width: 100%;
-            margin: 0 ;
-        }
-        .welcome{
-            width: 100%;
-            height:auto;
-
-            margin: 0 ;
-
-        }
-        .inforleft{
-            width: 466px;
-            height: 350px;
-            margin: 0 ;
-        }
-        .inforright{
-            /* margin-left: 10px; */
-            /* margin-right: 10px; */
-            width: 98%;
-        }        
-        .information{
-            width: 90%;           
-
-        }
-    } 
-    
-    
-    @media screen and (max-width: 500px) {
-        .head{
-            width: 100%;
-            margin: 0 ;}
-            
-        .welcome{
-            width: 100%;
-            height:auto;
-
-            margin: 0 ;
-
-        }
-        .inforleft{
-            width: 466px;
-            height: 350px;
-            margin: 0 ;
-        }
-        .inforright{
-            margin-left: 10px;
-            margin-right: 10px;
-            width: 98%;
-        }
-        .information{
-            width: 89%;           
-
-        }
-        .information5{
-            height: auto;
-        }
-        /* .btndiv {
+@media screen and (max-width: 500px) {
+    .head {
+        width: 100%;
+        margin: 0;
+    }
+    .welcome {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+    .inforleft {
+        width: 466px;
+        height: 350px;
+        margin: 0;
+    }
+    .inforright {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 98%;
+    }
+    .information {
+        width: 89%;
+    }
+    .information5 {
+        height: auto;
+    }
+    /* .btndiv {
             left: 10%;
             width: 79%;
         } */
-    }      
+}
