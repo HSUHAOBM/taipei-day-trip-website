@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TapPay Fields Bootstrap Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 20px 0;
+        }
+        
+        .container {
+            max-width: 750px;
+        }
+        
+        .tappay-field-focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+        
+        .has-error .tappay-field-focus {
+            border-color: #843534;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+        }
+        
+        .has-success .tappay-field-focus {
+            border-color: #2b542c;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <form id="gogogo">
+
+            <div class="form-group card-number-group">
+                <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
+                <div class="form-control card-number" id="card-number"></div>
+            </div>
+            <div class="form-control expiration-date" id="card-expiration-date"></div>
+            <div class="form-control cvc" id="card-ccv"></div>
+            <button type="submit" class="btn btn-default ">Pay</button>
+
+        </form>
+        <br>
+
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js " integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=" anonymous "></script> -->
+    <script src="https://js.tappaysdk.com/tpdirect/v5.7.0 "></script>
+    <script>
+        TPDirect.setupSDK(20409, 'app_KYrqKVHwBAtCqEdevKIrZCIfWbNgCUHCgOZwg5O8f3t3hKofm2nvlOOQF6O', 'sandbox')
+        TPDirect.card.setup({
+            fields: {
+                number: {
+                    element: '.form-control.card-number',
+                    placeholder: '**** **** **** ****'
+                },
+                expirationDate: {
+                    element: '.form-control.expiration-date',
+                    placeholder: 'MM / YY'
+                },
+                ccv: {
+                    element: '.form-control.cvc',
+                    placeholder: '後三碼'
+                }
+            },
+            styles: {
+                'input': {
+                    'color': 'gray'
+                },
+                'input.ccv': {
+                    // 'font-size': '16px'
+                },
+                ':focus': {
+                    'color': 'black'
+                },
+                '.valid': {
+                    'color': 'green'
+                },
+                '.invalid': {
+                    'color': 'red'
+                },
+                '@media screen and (max-width: 400px)': {
+                    'input': {
+                        'color': 'orange'
+                    }
+                }
+            }
+        })
+        TPDirect.card.onUpdate(function(update) {
+            // update.canGetPrime === true
+            // --> you can call TPDirect.card.getPrime()
+            let submitButton = document.querySelector('.btn.btn-default')
+            if (update.canGetPrime) {
+                // Enable submit Button to get prime.
+                submitButton.removeAttribute('disabled')
+            } else {
+                // Disable submit Button to get prime.
+                submitButton.setAttribute('disabled', true)
+            }
+
+            // cardTypes = ['mastercard', 'visa', 'jcb', 'amex', 'unionpay','unknown']
+            // if (update.cardType === 'visa') {
+            //     // Handle card type visa.
+
+            // }
+            if (update.cardType != "unknown ") {
+                // Handle card type visa.
+                document.querySelector('#cardtype').textContent = update.cardType;
+            }
+            if (update.cardType == "unknown ") {
+                // Handle card type visa.
+                document.querySelector('#cardtype').textContent = " ";
+            }
+
+
+            // number 欄位是錯誤的
+            if (update.status.number === 2) {
+                // setNumberFormGroupToError()
+            } else if (update.status.number === 0) {
+                // setNumberFormGroupToSuccess()
+            } else {
+                // setNumberFormGroupToNormal()
+            }
+
+            if (update.status.expiry === 2) {
+                // setNumberFormGroupToError()
+            } else if (update.status.expiry === 0) {
+                // setNumberFormGroupToSuccess()
+            } else {
+                // setNumberFormGroupToNormal()
+            }
+
+            if (update.status.ccv === 2) {
+                // setNumberFormGroupToError()
+            } else if (update.status.ccv === 0) {
+                // setNumberFormGroupToSuccess()
+            } else {
+                // setNumberFormGroupToNormal()
+            }
+        })
+        let form = document.getElementById('gogogo');
+
+        form.addEventListener('submit', function(event) {
+            alert("hi ")
+
+            // 取得 TapPay Fields 的 status
+            const tappayStatus = TPDirect.card.getTappayFieldsStatus()
+            console.log(tappayStatus)
+            event.preventDefault()
+
+            // 確認是否可以 getPrime
+            if (tappayStatus.canGetPrime === false) {
+                alert('can not get prime')
+                return
+            }
+
+            // Get prime
+            TPDirect.card.getPrime((result) => {
+                if (result.status !== 0) {
+                    alert('get prime error ' + result.msg)
+                    return
+                }
+                alert('get prime 成功，prime: ' + result.card.prime)
+
+                // send prime to your server, to pay with Pay by Prime API .
+                // Pay By Prime Docs: https://docs.tappaysdk.com/tutorial/zh/back.html#pay-by-prime-api
+            })
+        })
+    </script>
+</body>
+
+</html>

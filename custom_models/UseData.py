@@ -1,4 +1,6 @@
 import mysql.connector
+from datetime import datetime
+
 DBhost='localhost'        
 DBdatabase='learn_pon'#資料庫
 DBuser='root'         #帳號
@@ -142,7 +144,7 @@ def Registered(name,email,password):
             connection.close()
             print("資料庫連線已關閉")
 
-
+#登入
 def Signin(email,password):
     try:
         connection = mysql.connector.connect(
@@ -168,6 +170,105 @@ def Signin(email,password):
         else:
             print("帳號錯誤")
             return {"error": True, "message": "帳號或密碼錯誤"},None
+    finally:
+        if (connection.is_connected()):
+            cursor.close()
+            connection.close()
+            print("資料庫連線已關閉")
+
+#訂單資料儲存
+def Ordersave(useremail,userid,getorderdata,getordersapimessage):
+    try:
+        connection = mysql.connector.connect(
+        host=DBhost,         
+        database=DBdatabase, 
+        user=DBuser,      
+        password=DBpassword) 
+
+        cursor = connection.cursor()
+
+        sql = "INSERT INTO ordertable (useremail,userid,tripcost,tripid,tripname,tripaddress,tripimage,tripdate,triptime,contactname,contactemail,contactphone,payment,prime) VALUES (%s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+        new_data = (useremail, userid, getorderdata["order"]["price"],getorderdata["order"]["trip"]["attraction"]["id"],getorderdata["order"]["trip"]["attraction"]["name"],getorderdata["order"]["trip"]["attraction"]["address"],
+        getorderdata["order"]["trip"]["attraction"]["image"],getorderdata["order"]["trip"]["date"],getorderdata["order"]["trip"]["time"],getorderdata["order"]["contact"]["name"],getorderdata["order"]["contact"]["email"],getorderdata["order"]["contact"]["phone"],getordersapimessage,getorderdata["prime"])
+        cursor = connection.cursor()
+        cursor.execute(sql, new_data)
+        connection.commit()
+        print("訂單建立成功")
+        
+        #建立訂單標號
+        cursor.execute("Select id from ordertable where prime='%s';"%(getorderdata["prime"]))
+        records = cursor.fetchone()
+        tripordernumber=datetime.now().strftime('%Y%m%d')+"triporder"+str(records[0])
+        return tripordernumber
+        
+    finally:
+        if (connection.is_connected()):
+            cursor.close()
+            connection.close()
+            print("資料庫連線已關閉")
+
+#更新資料庫            
+def Orderupdate(getorderdata):
+    try:
+        connection = mysql.connector.connect(
+        host=DBhost,         
+        database=DBdatabase, 
+        user=DBuser,      
+        password=DBpassword) 
+
+        cursor = connection.cursor()
+        
+        cursor.execute("UPDATE ordertable SET payment='已付款' where prime='%s';"%(getorderdata["prime"]))
+        connection.commit()
+        print("訂單付款狀態已更新")
+        getordersapimessage="已付款"
+        return getordersapimessage
+        
+    finally:
+        if (connection.is_connected()):
+            cursor.close()
+            connection.close()
+            print("資料庫連線已關閉")
+
+
+#取資料庫訂單資料
+def getorderdata(ordernumber,useremail):
+    try:
+        connection = mysql.connector.connect(
+        host=DBhost,         
+        database=DBdatabase, 
+        user=DBuser,      
+        password=DBpassword) 
+
+        cursor = connection.cursor()
+        orderid=ordernumber.split("triporder")[1]
+        cursor.execute("Select * from ordertable where id='%s' and useremail='%s';"%(orderid,useremail))
+        records = cursor.fetchone()
+        if(records):
+            orderapi={
+              "order": {
+                "price": records[3],
+                "trip": {
+                  "attraction": {
+                    "id": records[0],
+                    "name": records[5],
+                    "address": records[6],
+                    "image": records[7]
+                  },
+                  "date": records[8],
+                  "time": records[9]
+                },
+                "contact": {
+                  "name": records[10],
+                  "email": records[11],
+                  "phone": records[12]
+                }
+              }
+            }
+        else: 
+            orderapi=None
+        return orderapi
+
     finally:
         if (connection.is_connected()):
             cursor.close()

@@ -31,7 +31,7 @@ function useronclick() {
 
     }
     textcontrol = !textcontrol
-    console.log(textcontrol);
+        // console.log(textcontrol);
 }
 
 function userboxhide() {
@@ -73,6 +73,7 @@ form.addEventListener('submit', function(event) {
     userpassword = document.querySelector('.inputtextpassword').value;
 
     if (username != "") {
+
         console.log("註冊")
         data = {
             "name": username,
@@ -89,12 +90,12 @@ form.addEventListener('submit', function(event) {
         }
         methodtype = "PATCH";
     }
+
     fetch(urlapi, {
             method: methodtype,
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
-                "test": "1234567489"
             }
         }).then(res => {
             return res.json();
@@ -119,6 +120,8 @@ form.addEventListener('submit', function(event) {
                 userboxhide();
             }
         });
+
+
 
 
 });
@@ -165,7 +168,7 @@ function checklogstate() {
     }).then(function(res) {
         return res.json();
     }).then(function(result) {
-        // console.log(result);
+        console.log(result);
         // console.log(result.data.name);
 
         if (result.data != null) {
@@ -174,7 +177,12 @@ function checklogstate() {
         if (document.querySelector('.welcometext')) {
             document.querySelector('.welcometext').textContent = "你好，" + result.data.name + "， 待預定的行程如下 ";
         }
-
+        if (document.querySelector('.maincenterinput1>input')) {
+            document.querySelector('.maincenterinput1>input').value = result.data.name;
+        }
+        if (document.querySelector('.maincenterinput2>input')) {
+            document.querySelector('.maincenterinput2>input').value = result.data.email;
+        }
 
     })
 }
