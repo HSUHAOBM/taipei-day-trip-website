@@ -4,10 +4,19 @@ import mysql.connector
 
 updata=[]
 
-DBhost='localhost'        
-DBdatabase='learn_pon'#資料庫
-DBuser='root'      #帳號
-DBpassword='HsuanHao_0610'#密碼
+import configparser
+import os
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+parent_dir = os.path.dirname(os.path.abspath(__file__))
+config.read(parent_dir + "/config.ini")
+
+DBhost=config.get('use_db', 'DBhost')   
+DBdatabase=config.get('use_db', 'DBdatabase')
+DBuser=config.get('use_db', 'DBuser')
+DBpassword=config.get('use_db', 'DBpassword')
+
 
 with open("data/taipei-attractions.json","r",encoding="utf-8") as json_data:
     data = json.load(json_data)

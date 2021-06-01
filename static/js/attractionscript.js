@@ -108,6 +108,7 @@ function displayResult(text) {
 
 window.onload = function() {
     loadapi()
+    setinputdate()
 }
 
 function prev() {
@@ -207,3 +208,17 @@ orderform.addEventListener('submit', function(event) {
     })
 
 })
+
+
+function setinputdate() {
+    let nowdate = new Date();
+    nowdate.setDate(nowdate.getDate() + 3)
+    let day = ("0" + nowdate.getDate()).slice(-2);
+    let month = ("0" + (nowdate.getMonth() + 1)).slice(-2);
+    let today = nowdate.getFullYear() + "-" + (month) + "-" + (day);
+
+    const date = document.getElementById('date');
+    date.setAttribute("value", today);
+
+    console.log(today)
+}

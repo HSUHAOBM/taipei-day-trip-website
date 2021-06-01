@@ -50,6 +50,15 @@ body {
     text-align: center
 }
 
+.headright>div:hover {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.headleft:hover {
+    color: #5ea7b9;
+}
+
 .welcome {
     width: 1200px;
     height: 400px;
@@ -93,9 +102,9 @@ body {
     width: 100%;
     justify-content: space-between;
     /* position: absolute;
-    top: 50%;
-    left: 0%;
-    height: 20px; */
+top: 50%;
+left: 0%;
+height: 20px; */
 }
 
 .btnright {
@@ -124,13 +133,20 @@ body {
     height: 36px;
     z-index: 5;
     cursor: pointer;
+    transform: scale(1, 1);
+    transition: all .2s ease-out;
 }
 
 .btnleft>img {
     transform: scaleX(-1);
-    opacity: 0.75;
     width: 100%;
     height: 100%;
+}
+
+.btnleft:hover,
+.btnright:hover {
+    transform: scale(1.2, 1.2);
+    opacity: 1;
 }
 
 #buttons span {
@@ -141,6 +157,13 @@ body {
     border-radius: 50%;
     background: #333;
     cursor: pointer;
+    transform: scale(1, 1);
+    transition: all .2s ease-out;
+}
+
+#buttons span:hover {
+    transform: scale(1.2, 1.2);
+    border: 1px solid rgb(80, 80, 80);
 }
 
 #buttons {
@@ -149,12 +172,12 @@ body {
     bottom: 20px;
     z-index: 2;
     /* height: 10px;
-    width: 100px;
-    left: 250px; */
+width: 100px;
+left: 250px; */
 }
 
 #buttons .on {
-    background: #f3dcd3;
+    background: #cecece;
 }
 
 .inforright {
@@ -257,6 +280,10 @@ body {
     height: 35px;
 }
 
+.rightend3>input:hover {
+    border: 2px solid rgb(0, 0, 0);
+}
+
 .rightend4 {
     margin-top: 15px;
     margin-left: 20px;
@@ -266,6 +293,12 @@ body {
     display: flex;
     flex: none;
     align-items: center;
+    transform: scale(1, 1);
+    transition: all .2s ease-out;
+}
+
+.rightend4>input:hover {
+    transform: scale(1.2, 1.2);
 }
 
 .right4inputtitle {
@@ -302,7 +335,6 @@ label {
 }
 
 .rightend4>input:checked {
-    border: 2px solid #fff;
     background: #448899;
 }
 
@@ -360,6 +392,11 @@ label {
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+}
+
+.rightend6:hover {
+    border: 2px solid rgb(0, 0, 0);
+    font-size: 20px;
 }
 
 .information {
@@ -505,7 +542,7 @@ form {
         height: auto;
     }
     /* .btndiv {
-            left: 10%;
-            width: 79%;
-        } */
+left: 10%;
+width: 79%;
+} */
 }

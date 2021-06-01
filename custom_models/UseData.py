@@ -1,11 +1,17 @@
 import mysql.connector
 from datetime import datetime
+import configparser
+import os
 
-DBhost='localhost'        
-DBdatabase='learn_pon'#資料庫
-DBuser='root'         #帳號
-DBpassword='HsuanHao_0610'     #密碼
-# DBpassword='root'     #密碼
+config = configparser.ConfigParser()
+config.read('config.ini')
+parent_dir = os.path.dirname(os.path.abspath(__file__))
+config.read(parent_dir + "/config.ini")
+
+DBhost=config.get('use_db', 'DBhost')   
+DBdatabase=config.get('use_db', 'DBdatabase')
+DBuser=config.get('use_db', 'DBuser')
+DBpassword=config.get('use_db', 'DBpassword')
 
 
 #旅遊數據數量
@@ -51,6 +57,9 @@ def LoadDataToId(id):
     cursor.close()
     connection.close()
     return data
+
+# a=LoadDataToId(5)
+# print(a)
 
 #頁數、關鍵字取得資料
 def LoadDataToDB(WebPage,WebKeyword):#

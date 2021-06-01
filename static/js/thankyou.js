@@ -9,7 +9,11 @@ function loadorderdataapi() {
         return response.json();
     }).then(function(result) {
         console.log(result)
-        addorderdata(result)
+        if (result == null) {
+            location.href = '/'
+        } else {
+            addorderdata(result)
+        }
     });
 }
 loadorderdataapi()

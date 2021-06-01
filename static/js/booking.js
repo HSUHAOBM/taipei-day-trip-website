@@ -51,7 +51,7 @@ function addbody() {
 }
 //刪除訂單
 function clearapi() {
-    let url = "/api/booking "
+    let url = "/api/booking"
     fetch(url, {
         method: "DELETE"
     }).then(function(response) {
@@ -61,7 +61,6 @@ function clearapi() {
         console.log(data)
         if (data.ok) {
             window.location.reload();
-
         }
     });
 }
@@ -211,7 +210,8 @@ function setfrontend() {
 
         // 確認是否可以 getPrime
         if (tappayStatus.canGetPrime === false) {
-            alert('can not get prime')
+            // alert('can not get prime')
+            document.querySelector('#message').textContent = "檢查輸入資料是否正確";
             return
         }
 
@@ -266,6 +266,17 @@ function bookinggotobackend(getprime) {
             if (result.data.payment.message == "已付款") {
                 // alert("成功付款")
                 gothankyou(result.data.number)
+
+                let url = "/api/booking"
+                fetch(url, {
+                    method: "DELETE"
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(result) {
+                    data = result;
+                    console.log(data)
+
+                });
             }
         });
 }
