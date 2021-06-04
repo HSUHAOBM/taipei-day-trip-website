@@ -29,6 +29,8 @@ function loadapi() {
         } else {
             data = result;
             addbody();
+            document.getElementById("loadgif").style.display = "none";
+
         }
     });
 }
@@ -85,6 +87,7 @@ function addbody() {
 //畫面讀取初始
 window.onload = function() {
     loadapi();
+    // initPage();
 }
 
 
@@ -94,6 +97,8 @@ window.addEventListener('scroll', function() {
     if (10 > (webwarp.scrollHeight - window.pageYOffset - window.innerHeight) & checkonload == true & nextpage != null) {
         checkonload = false;
         page += 1;
+        document.getElementById("loadgif").style.display = "flex";
+
         loadapi();
     }
 })
@@ -105,5 +110,15 @@ function addkeydata() {
     console.log(inputkeyword.value)
     keyword = inputkeyword.value
     div_content.innerHTML = "";
+    document.getElementById("loadgif").style.display = "flex";
+
     loadapi();
 }
+
+
+// function initPage() {
+//     var objLoading = document.getElementById("loadgif");
+//     if (objLoading != null) {
+//         objLoading.style.display = "none";
+//     }
+// }

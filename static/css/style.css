@@ -200,6 +200,11 @@ body {
     width: 1200px;
 }
 
+#loadgif {
+    margin: 0 auto;
+    display: flex;
+}
+
 .box {
     width: 270px;
     height: 242px;

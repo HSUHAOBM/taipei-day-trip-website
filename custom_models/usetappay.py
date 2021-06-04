@@ -9,7 +9,7 @@ parent_dir = os.path.dirname(os.path.abspath(__file__))
 config.read(parent_dir + "/config.ini")
 
 partnerkey=config.get('tappay', 'partner_key')   
-print("partnerkey",partnerkey)
+# print("partnerkey",partnerkey)
 
 
 

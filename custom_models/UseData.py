@@ -1,3 +1,4 @@
+from logging import error
 import mysql.connector
 from datetime import datetime
 import configparser
@@ -208,6 +209,14 @@ def Ordersave(useremail,userid,getorderdata,getordersapimessage):
         cursor.execute("Select id from ordertable where prime='%s';"%(getorderdata["prime"]))
         records = cursor.fetchone()
         tripordernumber=datetime.now().strftime('%Y%m%d')+"triporder"+str(records[0])
+
+        cursor = connection.cursor()
+        cursor.execute("UPDATE ordertable set ordernumber='%s' where id = '%d' "%(tripordernumber,records[0]))
+        connection.commit()
+        print("訂單回存成功")
+        # cursor.execute("UPDATE ordertable SET payment='已付款' where prime='%s';"%(getorderdata["prime"]))
+
+
         return tripordernumber
         
     finally:
@@ -239,7 +248,32 @@ def Orderupdate(getorderdata):
             connection.close()
             print("資料庫連線已關閉")
 
+#取使用者的部分訂單資料
+def getordername(useremail):
+    getordernameapi={}
+    try:
+        connection = mysql.connector.connect(
+        host=DBhost,         
+        database=DBdatabase, 
+        user=DBuser,      
+        password=DBpassword) 
 
+        cursor = connection.cursor()
+        cursor.execute("Select ordernumber,tripname,tripdate from ordertable where useremail='%s';"%(useremail))
+        records = cursor.fetchall()
+        print("records",records)
+        if(records):
+            for i in range(len(records)):
+                getordernameapi[i+1]={"ordernumber":records[i][0],"tripname":records[i][1],"tripdate":records[i][2]}
+        else:
+            getordernameapi["error"]=True;
+        return getordernameapi
+
+    finally:
+        if (connection.is_connected()):
+            cursor.close()
+            connection.close()
+            print("資料庫連線已關閉")
 #取資料庫訂單資料
 def getorderdata(ordernumber,useremail):
     try:

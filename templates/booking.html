@@ -23,14 +23,23 @@
             <!-- <a class="headleft" href='/'>台北一日遊</a> -->
             <div class="headcenter"></div>
             <div class="headright">
-                <div style="cursor:pointer;" class="bookingbtn" onclick="userboxshow();"> 預定行程</div>
+                <div style="cursor:pointer;" class="bookingbtn" onclick="userboxshow();">我的行程</div>
                 <div class="loginout" onClick="userboxshow();" style="cursor: pointer;">登入/註冊</div>
             </div>
         </div>
         <div class="main">
+
             <div class="maintop">
-                <a class="welcometext">你好，來賓，待預定的行程如下：</a>
+                <a class="welcometext">你好，來賓！</a>
+                <a class="welcometext a">已預定行程如下：</a>
+                <div class="orderbox"></div>
+                <img id="loadgif" src="/gif/ajax-loader4.gif" />
+
+                <a class="welcometext b">待預定的行程如下：</a>
+                <img id="loadgif2" src="/gif/ajax-loader4.gif" />
+
                 <a class="infortext" hidden>目前沒有任何待預訂的行程</a>
+
                 <div class="order">
                     <div class="left">
                         <div class="leftimg">

@@ -18,13 +18,13 @@ function loadapi() {
 
         if (data.data == null) {
             notaipdata();
+
         }
         if (data.data != null) {
             addbody();
             getaipdata();
         }
-
-
+        getuserorder();
     });
 }
 loadapi();
@@ -283,4 +283,58 @@ function bookinggotobackend(getprime) {
 
 function gothankyou(ordernumber) {
     location.href = '/thankyou?number=' + ordernumber
+}
+
+let orderbox = document.querySelector('.orderbox');
+
+function getuserorder() {
+    let src = "/api/getorder";
+    fetch(src).then(function(response) {
+        return response.json();
+    }).then(function(result) {
+
+        if (result.error) {
+            document.querySelector('.welcometext.a').style.display = "none";
+        } else {
+            let jslength = 0;
+            for (let js2 in result) {
+                jslength++;
+            }
+            //畫畫面
+            for (let i = 1; i < jslength + 1; i++) {
+                console.log(i)
+                let newdiv_box = document.createElement("div")
+                newdiv_box.className = "userorderbox";
+                orderbox.appendChild(newdiv_box)
+
+                newdiv_box.onclick = function() {
+                    location.href = '/thankyou?number=' + result[i].ordernumber
+                };
+
+
+
+                let a_box3 = document.createElement("a")
+                a_box3.textContent = result[i].tripdate + "－";
+                a_box3.className = "a_box a1";
+
+                newdiv_box.appendChild(a_box3)
+
+                let a_box2 = document.createElement("a")
+                a_box2.textContent = result[i].tripname;
+                a_box2.className = "a_box a2";
+
+                newdiv_box.appendChild(a_box2)
+
+
+
+                // a_box1.href = '/thankyou?number=' + result[i].ordernumber
+
+
+
+            }
+        }
+
+        document.getElementById("loadgif").style.display = "none";
+        document.getElementById("loadgif2").style.display = "none";
+    });
 }

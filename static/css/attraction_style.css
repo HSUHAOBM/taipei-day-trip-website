@@ -89,12 +89,18 @@ body {
     z-index: 1;
     /* width: 2160px;  */
     height: 400px;
+    transform: scale(1, 1);
+    transition: all .15s ease-out;
 }
 
 #list img {
     float: left;
     width: 540px;
     height: 400px;
+}
+
+#list img:hover {
+    transform: scale(1.02, 1.02);
 }
 
 .btndiv {
@@ -488,6 +494,12 @@ form {
     background: #757575;
     font-weight: bold;
     line-height: 104px;
+}
+
+#loadgif {
+    display: flex;
+    position: absolute;
+    width: 60px;
 }
 
 @media screen and (min-width: 500px) and (max-width: 1200px) {

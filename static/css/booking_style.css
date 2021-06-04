@@ -89,17 +89,21 @@ body {
 }
 
 .welcometext {
-    padding-top: 50px;
+    padding-top: 15px;
     width: 100%;
     font-family: Noto Sans TC;
     font-style: normal;
     font-weight: bold;
-    font-size: 19px;
+    font-size: 24px;
     color: #666666;
 }
 
+.welcometext.a {
+    padding-top: 5px;
+}
+
 .infortext {
-    margin-top: 35px;
+    margin-top: 10px;
     width: 980px;
     font-family: Noto Sans TC;
     font-style: normal;
@@ -116,6 +120,48 @@ body {
     padding-bottom: 40px;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.orderbox {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.userorderbox {
+    display: flex;
+    margin-top: 12px;
+    font-size: 20px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userorderbox:hover {
+    font-size: 21px;
+}
+
+.a_box {
+    text-decoration: none;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.a_box.a1 {
+    color: rgb(183 40 40 / 59%);
+}
+
+.a_box.a2 {
+    color: #448899;
+    font-weight: bold;
 }
 
 .left {
@@ -159,6 +205,14 @@ body {
     cursor: pointer;
     transform: scale(1, 1);
     transition: all .2s ease-out;
+}
+
+.righttext1>div:hover,
+.righttext2>div:hover,
+.righttext3>div:hover,
+.righttext5>div:hover,
+.righttext4>div:hover {
+    font-weight: bold;
 }
 
 .righttext1 {
@@ -424,6 +478,18 @@ input {
     border-color: #2b542c;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+}
+
+#loadgif {
+    display: flex;
+    width: 26px;
+    padding-top: 15px;
+}
+
+#loadgif2 {
+    display: flex;
+    width: 26px;
+    padding-top: 15px;
 }
 
 @media screen and (min-width: 500px) and (max-width: 1200px) {
