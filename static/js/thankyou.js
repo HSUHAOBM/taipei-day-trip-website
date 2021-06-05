@@ -12,7 +12,8 @@ function loadorderdataapi() {
         if (result == null) {
             location.href = '/'
         } else {
-            addorderdata(result)
+            addorderdata(result);
+            document.getElementById("loadgif").style.display = "none";
         }
     });
 }
