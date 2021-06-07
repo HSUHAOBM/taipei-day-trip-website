@@ -18,13 +18,13 @@ function loadapi() {
 
         if (data.data == null) {
             notaipdata();
+
         }
         if (data.data != null) {
             addbody();
             getaipdata();
         }
-
-
+        getuserorder();
     });
 }
 loadapi();
@@ -51,7 +51,7 @@ function addbody() {
 }
 //刪除訂單
 function clearapi() {
-    let url = "/api/booking "
+    let url = "/api/booking"
     fetch(url, {
         method: "DELETE"
     }).then(function(response) {
@@ -61,7 +61,6 @@ function clearapi() {
         console.log(data)
         if (data.ok) {
             window.location.reload();
-
         }
     });
 }
@@ -211,7 +210,8 @@ function setfrontend() {
 
         // 確認是否可以 getPrime
         if (tappayStatus.canGetPrime === false) {
-            alert('can not get prime')
+            // alert('can not get prime')
+            document.querySelector('#message').textContent = "檢查輸入資料是否正確";
             return
         }
 
@@ -266,10 +266,75 @@ function bookinggotobackend(getprime) {
             if (result.data.payment.message == "已付款") {
                 // alert("成功付款")
                 gothankyou(result.data.number)
+
+                let url = "/api/booking"
+                fetch(url, {
+                    method: "DELETE"
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(result) {
+                    data = result;
+                    console.log(data)
+
+                });
             }
         });
 }
 
 function gothankyou(ordernumber) {
     location.href = '/thankyou?number=' + ordernumber
+}
+
+let orderbox = document.querySelector('.orderbox');
+
+function getuserorder() {
+    let src = "/api/getorder";
+    fetch(src).then(function(response) {
+        return response.json();
+    }).then(function(result) {
+
+        if (result.error) {
+            document.querySelector('.welcometext.a').style.display = "none";
+        } else {
+            let jslength = 0;
+            for (let js2 in result) {
+                jslength++;
+            }
+            //畫畫面
+            for (let i = 1; i < jslength + 1; i++) {
+                console.log(i)
+                let newdiv_box = document.createElement("div")
+                newdiv_box.className = "userorderbox";
+                orderbox.appendChild(newdiv_box)
+
+                newdiv_box.onclick = function() {
+                    location.href = '/thankyou?number=' + result[i].ordernumber
+                };
+
+
+
+                let a_box3 = document.createElement("a")
+                a_box3.textContent = result[i].tripdate + "－";
+                a_box3.className = "a_box a1";
+
+                newdiv_box.appendChild(a_box3)
+
+                let a_box2 = document.createElement("a")
+                a_box2.textContent = result[i].tripname;
+                a_box2.className = "a_box a2";
+
+                newdiv_box.appendChild(a_box2)
+
+
+
+                // a_box1.href = '/thankyou?number=' + result[i].ordernumber
+
+
+
+            }
+        }
+
+        document.getElementById("loadgif").style.display = "none";
+        document.getElementById("loadgif2").style.display = "none";
+    });
 }

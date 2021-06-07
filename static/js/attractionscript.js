@@ -5,11 +5,12 @@ url = url[url.length - 1]
 
 var list = document.getElementById('list');
 var webimgcount = 0; //web img coun +2
-var imhlength = 0; //web img
+let imhlength = 0; //web img
 var buttons = document.getElementById('buttons').getElementsByTagName('span');
 var index = 1; //圖片初始狀態
 let data = null;
-
+let timer;
+let imgend = false;
 
 function loadapi() {
     // let src = "http://3.18.249.2:3000/api/attraction/"+Number(1)
@@ -20,14 +21,21 @@ function loadapi() {
     }).then(function(result) {
         data = result.data;
         // console.log(data)
+
+        //圖片數量
+        imhlength = (data.images[0].split('http://').length) - 1
         addbody();
+
+        timestart();
+        document.getElementById("loadgif").style.display = "none";
+
+
     });
 }
 
 function addbody() {
 
-    //圖片數量
-    imhlength = (data.images[0].split('http://').length) - 1
+
     console.log("圖片數量", imhlength)
     webimgcount = imhlength + 2
         // console.log(webimgcount)
@@ -98,6 +106,9 @@ function addbody() {
 
     let information5 = document.querySelector('.information5');
     information5.textContent = data.transport
+
+
+
 }
 
 //場次選擇費用
@@ -105,10 +116,35 @@ function displayResult(text) {
     document.querySelector('.rightend5div').textContent = text;
 }
 
+// 自動撥放--------------------------------------
+
+function timestart() {
+
+    timer = setInterval(function() {
+        play();
+    }, 2800)
+}
+
+function play() {
+    if (imgend) { prev(); } else {
+        next();
+    }
+
+}
+
+function stop() {
+    clearInterval(timer);
+}
+list.onmouseover = stop;
+list.onmouseout = timestart;
+// -----------------------------------------------
 
 window.onload = function() {
-    loadapi()
+    loadapi();
+    setinputdate();
+
 }
+
 
 function prev() {
     index -= 1;
@@ -116,10 +152,13 @@ function prev() {
         index = imhlength;
     }
     buttonsShow();
+
     animate(540);
+
 }
 
 function next() {
+
     index += 1;
     if (index > imhlength) {
         index = 1;
@@ -128,17 +167,31 @@ function next() {
     animate(-540);
 }
 
+
+
+
 function animate(offset) {
     let newLeft = parseInt(list.style.left) + offset;
     list.style.left = newLeft + 'px';
-    maxleft = -540 * (webimgcount - 2)
-        // console.log(maxleft)
+
+    maxleft = -540 * (webimgcount - 2);
+    if (newLeft == -540) {
+        imgend = false;
+        // console.log(imgend, "第一張") //第一張
+    }
+    if (newLeft == maxleft) {
+        imgend = true;
+        // console.log(imgend, "最後張") //最後張
+    }
+
     if (newLeft > -540) {
         list.style.left = maxleft + 'px';
+
     }
     if (newLeft < maxleft) {
         list.style.left = -540 + 'px';
     }
+
 }
 
 //根據按鈕前往圖片
@@ -207,3 +260,17 @@ orderform.addEventListener('submit', function(event) {
     })
 
 })
+
+
+function setinputdate() {
+    let nowdate = new Date();
+    nowdate.setDate(nowdate.getDate() + 3)
+    let day = ("0" + nowdate.getDate()).slice(-2);
+    let month = ("0" + (nowdate.getMonth() + 1)).slice(-2);
+    let today = nowdate.getFullYear() + "-" + (month) + "-" + (day);
+
+    const date = document.getElementById('date');
+    date.setAttribute("value", today);
+
+    // console.log(today)
+}

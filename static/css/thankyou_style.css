@@ -30,6 +30,10 @@ fieldset {
     border-radius: 30px;
 }
 
+#loadgif {
+    width: 40px;
+}
+
 .order {
     font-family: Noto Sans TC;
     font-style: normal;

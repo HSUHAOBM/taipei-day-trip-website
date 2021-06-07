@@ -9,7 +9,12 @@ function loadorderdataapi() {
         return response.json();
     }).then(function(result) {
         console.log(result)
-        addorderdata(result)
+        if (result == null) {
+            location.href = '/'
+        } else {
+            addorderdata(result);
+            document.getElementById("loadgif").style.display = "none";
+        }
     });
 }
 loadorderdataapi()

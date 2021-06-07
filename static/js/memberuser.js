@@ -4,8 +4,7 @@ let bookingbtn = document.querySelector('.bookingbtn');
 
 let urlapi = "/api/user";
 
-
-
+//切換登入；註冊
 function useronclick() {
 
     if (textcontrol) {
@@ -33,13 +32,13 @@ function useronclick() {
     textcontrol = !textcontrol
         // console.log(textcontrol);
 }
-
+//登入介面隱藏
 function userboxhide() {
     document.querySelector('.userbox').style.display = "none";
     //灰層
     document.getElementById("hidebg").style.display = "none";
 }
-
+//登入介面顯示
 function userboxshow() {
 
     document.querySelector('.inputtextname').value = "";
@@ -169,13 +168,12 @@ function checklogstate() {
         return res.json();
     }).then(function(result) {
         console.log(result);
-        // console.log(result.data.name);
 
         if (result.data != null) {
             logoin();
         }
         if (document.querySelector('.welcometext')) {
-            document.querySelector('.welcometext').textContent = "你好，" + result.data.name + "， 待預定的行程如下 ";
+            document.querySelector('.welcometext').textContent = "你好，" + result.data.name + "。";
         }
         if (document.querySelector('.maincenterinput1>input')) {
             document.querySelector('.maincenterinput1>input').value = result.data.name;
