@@ -14,7 +14,8 @@ let imgend = false;
 
 function loadapi() {
     // let src = "http://3.18.249.2:3000/api/attraction/"+Number(1)
-    let src = "http://3.18.249.2:3000/api/attraction/" + Number(url)
+    // let src = "http://3.18.249.2:3000/api/attraction/" + Number(url)
+    let src = "/api/attraction/" + Number(url)
 
     fetch(src).then(function(response) {
         return response.json();

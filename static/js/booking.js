@@ -310,9 +310,6 @@ function getuserorder() {
                 newdiv_box.onclick = function() {
                     location.href = '/thankyou?number=' + result[i].ordernumber
                 };
-
-
-
                 let a_box3 = document.createElement("a")
                 a_box3.textContent = result[i].tripdate + "－";
                 a_box3.className = "a_box a1";
