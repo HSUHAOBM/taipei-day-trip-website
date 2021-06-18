@@ -266,7 +266,7 @@ def getordername(useremail):
             for i in range(len(records)):
                 getordernameapi[i+1]={"ordernumber":records[i][0],"tripname":records[i][1],"tripdate":records[i][2]}
         else:
-            getordernameapi["error"]=True;
+            getordernameapi["error"]=True
         return getordernameapi
 
     finally:

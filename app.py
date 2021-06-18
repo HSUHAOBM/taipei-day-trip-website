@@ -1,9 +1,14 @@
 import re
 from flask import *
 from requests.api import get
-from custom_models import UseData, apianalysis,usetappay
+from custom_models import UseData, apianalysis,usetappay,updatatos3,test_userdsdb
 
 from flask_cors import CORS
+
+
+
+
+
 
 getdata = {}
 
@@ -219,16 +224,46 @@ def page_500(error):
     return Response(json.dumps({"error": True, "message": "伺服器內部錯誤"}, sort_keys=False), mimetype='application/json'), 500
 
 
-# @app.route("/123")
-# def index123():
-#     return render_template("test2.html")
 
+@app.route("/test")
+def testindex():
+    return render_template("test_message.html")
 
-# @app.route("/321")
-# def index321():
-#     return render_template("example.html")
+@app.route("/upindex",methods=["POST", "GET", "PATCH", "DELETE"])
+def upindex():
+    print("request",request.form)
+    print("request",request.files)
+    print("request",len(request.form))
+    print("request",len(request.files))
 
+    if len(request.files)==0:
+        fdata = request.form['uptext'] #文字
+        s3imgsrc=""
+        print("文字訊息",fdata)    
 
-app.run(host="0.0.0.0", port=3000)
-# app.run(port=3000, debug=True)
+    else:
+        file = request.files['upfile'] #檔案
+        fdata = request.form['uptext'] #文字
+        
+        # #取得圖片網址位置
+        s3imgsrc=updatatos3.upload_file_to_s3_main(file)
+
+        print("file",file)   
+        print("文字訊息",fdata)    
+        print("上傳的檔案名稱",file.filename)
+
+    # print("圖片連結網址",s3imgsrc)
+
+    test_userdsdb.uptords(fdata,s3imgsrc)
+
+    return Response(json.dumps({"message": "上傳成功"}, sort_keys=False), mimetype='application/json')
+
+@app.route("/api/test")
+def testindexapi():
+    data=test_userdsdb.loadtords()
+    return Response(json.dumps({"data": data}, sort_keys=False), mimetype='application/json')
+
+# app.run(host="0.0.0.0", port=3000)
+app.run(port=3000, debug=True)
 # app.run(port=3000)
+
