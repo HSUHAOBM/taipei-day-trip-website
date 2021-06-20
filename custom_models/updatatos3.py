@@ -41,8 +41,9 @@ def upload_file_to_s3(file, bucket_name, acl="public-read"):
     except Exception as e:
         print("Something Happened: ", e)
         return e
+    # return "{}{}".format("https://husanhaoawsbucket.s3.amazonaws.com/", file.filename)
 
-    return "{}{}".format("https://husanhaoawsbucket.s3.amazonaws.com/", file.filename)
+    return "http://d3uk1zhmxdtlrt.cloudfront.net/" + file.filename
 
 
 #檢查檔案格式
@@ -58,7 +59,9 @@ def upload_file_to_s3_main(file):
 
     if file and allowed_file(file.filename):
         file.filename = secure_filename(file.filename)
+        # 轉編碼
         # file.filename = secure_filename(''.join(lazy_pinyin(file.filename)))
+
         # print("圖片連結網址",str(output))
         # interimgsrc=output
         return str(upload_file_to_s3(file, "husanhaoawsbucket"))
