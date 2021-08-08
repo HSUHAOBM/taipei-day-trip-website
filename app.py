@@ -1,4 +1,3 @@
-import re
 from flask import *
 from requests.api import get
 from custom_models import UseData, apianalysis,usetappay,updatatos3,test_userdsdb
@@ -263,6 +262,6 @@ def testindexapi():
     data=test_userdsdb.loadtords()
     return Response(json.dumps({"data": data}, sort_keys=False), mimetype='application/json')
 
-app.run(host="0.0.0.0", port=3000)
 # app.run(port=3000, debug=True)
+app.run(host="0.0.0.0", port=3000)
 
