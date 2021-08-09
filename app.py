@@ -64,7 +64,10 @@ def apibooking():
         if request.method == "POST":
             orderdata = request.get_json()
             id = orderdata['attractionId']
-            apigetdata = apianalysis.apiget(id)
+            apigetdata = UseData.LoadDataToId(id)
+
+            # apigetdata = apianalysis.apiget(id)
+            # print("apigetdata",apigetdata)
             getdata["data"] = {}
             getdata["data"]["attraction"] = apigetdata
             getdata["data"]["date"] = orderdata['date']
@@ -106,6 +109,7 @@ def attractionId(attractionId):
     attractionId = int(attractionId)
     if attractionId <= int(IdCount) and attractionId >= 1:
         data = UseData.LoadDataToId(attractionId)
+        # print(data)
         return Response(json.dumps({"data": data}, sort_keys=False), mimetype='application/json')
     else:
         abort(400)
@@ -120,7 +124,7 @@ def usercheck():
     if useremail and username and userid:
         # 檢核登入狀態
         if request.method == "GET":
-            print("登入中")
+            # print("登入中")
             return {"data": {
                 "id": userid,
                 "name": username,
@@ -157,7 +161,7 @@ def usercheck():
                         session['useremail'] = useremail
                         session['username'] = DBloaddata[1]
                         session['id'] = DBloaddata[0]
-                        print("session", session)
+                        # print("session", session)
                     data = {}
                     return state
         else:
@@ -247,9 +251,9 @@ def upindex():
         # #取得圖片網址位置
         s3imgsrc=updatatos3.upload_file_to_s3_main(file)
 
-        print("file",file)   
-        print("文字訊息",fdata)    
-        print("上傳的檔案名稱",file.filename)
+        # print("file",file)   
+        # print("文字訊息",fdata)    
+        # print("上傳的檔案名稱",file.filename)
 
     # print("圖片連結網址",s3imgsrc)
 
