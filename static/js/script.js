@@ -17,7 +17,7 @@ var data;
 //讀取資料
 function loadapi() {
     data = null;
-    let src = "http://3.18.249.2:3000/api/attractions?page=" + String(page) + "&keyword=" + keyword;
+    let src = "/api/attractions?page=" + String(page) + "&keyword=" + keyword;
     fetch(src).then(function(response) {
         return response.json();
     }).then(function(result) {

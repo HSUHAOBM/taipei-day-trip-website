@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>發表一篇圖文</title>
+    <style>
+        .imgbox {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .messagesimage {
+            width: 300px
+        }
+        
+        .messages {
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+        
+        form {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>發表一篇圖文</h2>
+    <form action="/to/upload" enctype="multipart/form-data" id="sentmessage">
+        <div>
+            <label for="uptext " class="up text ">文字訊息：</label>
+            <input type="text" id="sentmessagetext"></div>
+        <div class="imgbox">
+            <label for="upimage " class="up image ">圖片檔案：</label>
+            <input type="file" name=file onchange="previewFile()" id="sentmessageimage" accept="image/gif, image/jpeg, image/png">
+            <img src="" id="img" width="300px">
+
+        </div>
+        <button type="submit">送出</button>
+
+    </form>
+
+    <hr>
+    <div id="message"></div>
+
+    <script src="js/test_message.js"></script>
+
+
+</body>
+
+</html>

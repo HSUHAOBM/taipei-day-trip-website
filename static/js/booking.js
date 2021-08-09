@@ -46,7 +46,7 @@ function addbody() {
 
     }
     document.querySelector('.righttext5>div').textContent = data.data.attraction.address;
-    document.querySelector('.leftimg>img').src = data.data.attraction.image;
+    document.querySelector('.leftimg>img').src = "http://" + data.data.attraction.images.split('http://')[1].split(',')[0];
     document.querySelector('.leftimg>img').title = data.data.attraction.name;
 }
 //刪除訂單
@@ -302,7 +302,7 @@ function getuserorder() {
             }
             //畫畫面
             for (let i = 1; i < jslength + 1; i++) {
-                console.log(i)
+                // console.log(i)
                 let newdiv_box = document.createElement("div")
                 newdiv_box.className = "userorderbox";
                 orderbox.appendChild(newdiv_box)
@@ -310,9 +310,6 @@ function getuserorder() {
                 newdiv_box.onclick = function() {
                     location.href = '/thankyou?number=' + result[i].ordernumber
                 };
-
-
-
                 let a_box3 = document.createElement("a")
                 a_box3.textContent = result[i].tripdate + "－";
                 a_box3.className = "a_box a1";

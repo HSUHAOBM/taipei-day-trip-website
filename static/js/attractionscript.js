@@ -14,7 +14,8 @@ let imgend = false;
 
 function loadapi() {
     // let src = "http://3.18.249.2:3000/api/attraction/"+Number(1)
-    let src = "http://3.18.249.2:3000/api/attraction/" + Number(url)
+    // let src = "http://3.18.249.2:3000/api/attraction/" + Number(url)
+    let src = "/api/attraction/" + Number(url)
 
     fetch(src).then(function(response) {
         return response.json();
@@ -23,7 +24,7 @@ function loadapi() {
         // console.log(data)
 
         //圖片數量
-        imhlength = (data.images[0].split('http://').length) - 1
+        imhlength = (data.images.split('http://').length) - 1
         addbody();
 
         timestart();
@@ -46,19 +47,19 @@ function addbody() {
 
     //最後一張
     let listimg_end = document.createElement("img")
-    listimg_end.src = "http://" + data.images[0].split('http://')[imhlength].split(',')[0]
+    listimg_end.src = "http://" + data.images.split('http://')[imhlength].split(',')[0]
     list.appendChild(listimg_end)
         //中間1~end
     for (let i = 1; i < imhlength + 1; i++) {
         // console.log("i",i)
         // console.log("http://" + data.images[0].split('http://')[i].split(',')[0])
         let listimg = document.createElement("img")
-        listimg.src = "http://" + data.images[0].split('http://')[i].split(',')[0]
+        listimg.src = "http://" + data.images.split('http://')[i].split(',')[0]
         list.appendChild(listimg)
     }
     //第一張
     let listimg_one = document.createElement("img")
-    listimg_one.src = "http://" + data.images[0].split('http://')[1].split(',')[0]
+    listimg_one.src = "http://" + data.images.split('http://')[1].split(',')[0]
     list.appendChild(listimg_one)
 
     //根據圖片數量創片對應按鈕

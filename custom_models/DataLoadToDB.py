@@ -46,19 +46,20 @@ for i in range(len(data["result"]["results"])):
                   ])
 
 
+def DataLoadToDB():
+    try:
+        connection = mysql.connector.connect(
+        host=DBhost,         
+        database=DBdatabase, 
+        user=DBuser,      
+        password=DBpassword) 
 
-connection = mysql.connector.connect(
-host=DBhost,         
-database=DBdatabase, 
-user=DBuser,      
-password=DBpassword) 
+        sql = f"""INSERT INTO taipei_trip (id,stitle,category,description,address,transport,mrt,latitude,longitude,images) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"""
 
-sql = f"""INSERT INTO taipei_trip (id,stitle,category,description,address,transport,mrt,latitude,longitude,images) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"""
+        cursor = connection.cursor()
+        cursor.executemany(sql, updata)
 
-cursor = connection.cursor()
-cursor.executemany(sql, updata)
-
-connection.commit()
-
-cursor.close()
-connection.close()
+        connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
