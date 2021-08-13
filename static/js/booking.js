@@ -12,7 +12,7 @@ function loadapi() {
         return response.json();
     }).then(function(result) {
         data = result;
-        console.log(data)
+        // console.log(data)
 
         if (result.error) { goindex(); }
 
@@ -58,7 +58,7 @@ function clearapi() {
         return response.json();
     }).then(function(result) {
         data = result;
-        console.log(data)
+        // console.log(data)
         if (data.ok) {
             window.location.reload();
         }
@@ -262,7 +262,7 @@ function bookinggotobackend(getprime) {
             return res.json();
         })
         .then(result => {
-            console.log(result);
+            // console.log(result);
             if (result.data.payment.message == "已付款") {
                 // alert("成功付款")
                 gothankyou(result.data.number)
@@ -274,7 +274,7 @@ function bookinggotobackend(getprime) {
                     return response.json();
                 }).then(function(result) {
                     data = result;
-                    console.log(data)
+                    // console.log(data)
 
                 });
             }

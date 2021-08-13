@@ -18,10 +18,11 @@ DBpassword=config.get('use_db', 'DBpassword')
 
 def getConnection():
     connection = PooledDB(
-    creator=pymysql,# 初始化時,連線池至少建立的空閒連線,0表示不建立
-    maxconnections=3,# 連線池中空閒的最多連線數,0和None表示沒有限制    
-    mincached=2,# 連線池中最多共享的連線數量,0和None表示全部共享(其實沒什麼卵用)
-    maxcached=5,maxshared=3,host=DBhost,charset='utf8',database=DBdatabase,user=DBuser,password=DBpassword)
+    creator=pymysql,
+    maxconnections=3,
+    mincached=5,
+    maxcached=6,maxshared=6,host=DBhost,
+    charset='utf8',database=DBdatabase,user=DBuser,password=DBpassword)
     return connection
 
 
@@ -31,12 +32,9 @@ def CheakIdCount():
         connection = getConnection()
         conn = connection.connection()
         cursor = conn.cursor()
-
         # cursor = connection.cursor()
         cursor.execute("Select count(*) from taipei_trip;")
         records = cursor.fetchone()
-        cursor.close()
-        conn.close()
         return records[0]
     finally:
         cursor.close()
@@ -49,10 +47,8 @@ def LoadDataToId(id):
         conn = connection.connection()
         cursor = conn.cursor()
 
-        cursor.execute("Select * from taipei_trip where id='%s';"%(id))
+        cursor.execute("Select * from taipei_trip where id='%s' limit 1;"%(id))
         records = cursor.fetchone()
-        # images=[]
-        # images.append(records[9])
         data={
             "id":records[0],
             "name":records[1],
@@ -81,7 +77,6 @@ def LoadDataToDB(WebPage,WebKeyword):#
         cursor = conn.cursor()
 
         if (WebKeyword==None):
-
             cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage))*12,12)) 
             records = cursor.fetchall()
             data=[]
@@ -101,12 +96,9 @@ def LoadDataToDB(WebPage,WebKeyword):#
                     "images": images
                 })            
             return data
-
         if (WebKeyword!=None):
-            # cursor.execute("SELECT * FROM taipei_trip WHERE stitle Like '%{}%' LIMIT {} ,{} ".format(WebKeyword,int(WebPage)*12,12))
             cursor.execute("SELECT * FROM taipei_trip WHERE stitle Like '%{}%' LIMIT 12 OFFSET {}".format(WebKeyword, int(WebPage)*12))
             records = cursor.fetchall()    
-            # print(len(records))
             data=[]
             for i in range(len(records)):
                 images=[]
@@ -136,7 +128,7 @@ def Registered(name,email,password):
         cursor = conn.cursor()
 
         #檢查是否註冊過
-        cursor.execute("SELECT * FROM membertable WHERE useremail= '%s';" % (email))
+        cursor.execute("SELECT * FROM membertable WHERE useremail= '%s' limit 1;" % (email))
         records = cursor.fetchone()
 
             
@@ -163,7 +155,7 @@ def Signin(email,password):
         connection = getConnection()
         conn = connection.connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT id,username,userpassword FROM membertable WHERE useremail= '%s';" % (email))
+        cursor.execute("SELECT id,username,userpassword FROM membertable WHERE useremail= '%s' limit 1;" % (email))
         records = cursor.fetchone()
         if (records):
             # print("帳號正確。。開始檢查密碼")

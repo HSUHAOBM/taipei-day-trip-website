@@ -90,7 +90,7 @@ form.addEventListener('submit', function(event) {
         return response.json();
     }).then(function(result) {
 
-        console.log(result)
+        // console.log(result)
         if (result) {
             window.location.reload();
         }

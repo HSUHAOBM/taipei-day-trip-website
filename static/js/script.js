@@ -107,7 +107,7 @@ window.addEventListener('scroll', function() {
 function addkeydata() {
     page = 0;
     let inputkeyword = document.querySelector('.searchtext');
-    console.log(inputkeyword.value)
+    // console.log(inputkeyword.value)
     keyword = inputkeyword.value
     div_content.innerHTML = "";
     document.getElementById("loadgif").style.display = "flex";

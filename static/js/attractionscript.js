@@ -240,7 +240,7 @@ orderform.addEventListener('submit', function(event) {
     }
 
     let = urlbook = "/api/booking";
-    console.log(formdata);
+    // console.log(formdata);
     fetch(urlbook, {
         method: "POST",
         body: JSON.stringify(formdata),
@@ -250,7 +250,7 @@ orderform.addEventListener('submit', function(event) {
     }).then(function(res) {
         return res.json();
     }).then(function(result) {
-        console.log(result);
+        // console.log(result);
         if (result.error) {
             userboxshow();
         }

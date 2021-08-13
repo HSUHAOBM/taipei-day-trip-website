@@ -73,7 +73,7 @@ form.addEventListener('submit', function(event) {
 
     if (username != "") {
 
-        console.log("註冊")
+        // console.log("註冊")
         data = {
             "name": username,
             "email": useremail,
@@ -82,7 +82,7 @@ form.addEventListener('submit', function(event) {
         methodtype = "POST";
     }
     if (username == "") {
-        console.log("登入")
+        // console.log("登入")
         data = {
             "email": useremail,
             "password": userpassword
@@ -100,7 +100,7 @@ form.addEventListener('submit', function(event) {
             return res.json();
         })
         .then(result => {
-            console.log(result);
+            // console.log(result);
             if (result.error) {
                 document.querySelector('.textpoint').textContent = result.message;
                 document.querySelector('.inputtextname').value = "";
@@ -151,7 +151,7 @@ function logout() {
     }).then(function(res) {
         return res.json();
     }).then(function(result) {
-        console.log(result);
+        // console.log(result);
         if (result.ok) {
             // alert("成功登出")
             window.location.reload();
@@ -167,7 +167,7 @@ function checklogstate() {
     }).then(function(res) {
         return res.json();
     }).then(function(result) {
-        console.log(result);
+        // console.log(result);
 
         if (result.data != null) {
             logoin();

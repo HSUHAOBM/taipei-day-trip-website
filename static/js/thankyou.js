@@ -8,7 +8,7 @@ function loadorderdataapi() {
     fetch(orderapisrc).then(function(response) {
         return response.json();
     }).then(function(result) {
-        console.log(result)
+        // console.log(result)
         if (result == null) {
             location.href = '/'
         } else {
@@ -20,7 +20,7 @@ function loadorderdataapi() {
 loadorderdataapi()
 
 function addorderdata(result) {
-    console.log(result.order.trip.attraction.image)
+    // console.log(result.order.trip.attraction.image)
     if (result.order.trip.time == "morning") {
         ordertimetext = "早上 9 點到下午 4 點";
     }
