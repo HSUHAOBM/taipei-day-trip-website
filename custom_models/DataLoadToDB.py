@@ -17,7 +17,7 @@ DBdatabase=config.get('use_db', 'DBdatabase')
 DBuser=config.get('use_db', 'DBuser')
 DBpassword=config.get('use_db', 'DBpassword')
 
-with open("data/taipei-attractions.json","r",encoding="utf-8") as json_data:
+with open(parent_dir +"/data/taipei-attractions.json","r",encoding="utf-8") as json_data:
     data = json.load(json_data)
 
 def getimg(a): #圖片篩選  
@@ -44,7 +44,7 @@ for i in range(len(data["result"]["results"])):
                    ,",".join(getimg(",http://".join(data["result"]["results"][i]["file"].lower().split("http://"))))
                   ])
 
-
+print(updata)
 
 connection = mysql.connector.connect(
 host=DBhost,         
