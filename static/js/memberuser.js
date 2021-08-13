@@ -42,8 +42,8 @@ function userboxhide() {
 function userboxshow() {
 
     document.querySelector('.inputtextname').value = "";
-    document.querySelector('.inputtextemail').value = "";
-    document.querySelector('.inputtextpassword').value = "";
+    // document.querySelector('.inputtextemail').value = "";
+    // document.querySelector('.inputtextpassword').value = "";
     document.querySelector('.textpoint').textContent = "";
     document.querySelector('.userbox').style.display = "flex";
 

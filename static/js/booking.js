@@ -112,15 +112,15 @@ function setfrontend() {
         fields: {
             number: {
                 element: '.form-control.card-number',
-                placeholder: '**** **** **** ****'
+                placeholder: '4242 4242 4242 4242'
             },
             expirationDate: {
                 element: '.form-control.expiration-date',
-                placeholder: 'MM / YY'
+                placeholder: '01 / 23'
             },
             ccv: {
                 element: '.form-control.cvc',
-                placeholder: '後三碼'
+                placeholder: '123'
             }
         },
         styles: {
