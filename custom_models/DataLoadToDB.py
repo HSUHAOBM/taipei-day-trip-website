@@ -17,7 +17,6 @@ DBdatabase=config.get('use_db', 'DBdatabase')
 DBuser=config.get('use_db', 'DBuser')
 DBpassword=config.get('use_db', 'DBpassword')
 
-
 with open("data/taipei-attractions.json","r",encoding="utf-8") as json_data:
     data = json.load(json_data)
 
@@ -46,20 +45,19 @@ for i in range(len(data["result"]["results"])):
                   ])
 
 
-def DataLoadToDB():
-    try:
-        connection = mysql.connector.connect(
-        host=DBhost,         
-        database=DBdatabase, 
-        user=DBuser,      
-        password=DBpassword) 
 
-        sql = f"""INSERT INTO taipei_trip (id,stitle,category,description,address,transport,mrt,latitude,longitude,images) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"""
+connection = mysql.connector.connect(
+host=DBhost,         
+database=DBdatabase, 
+user=DBuser,      
+password=DBpassword) 
 
-        cursor = connection.cursor()
-        cursor.executemany(sql, updata)
+sql = f"""INSERT INTO taipei_trip (id,stitle,category,description,address,transport,mrt,latitude,longitude,images) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"""
 
-        connection.commit()
-    finally:
-        cursor.close()
-        connection.close()
+cursor = connection.cursor()
+cursor.executemany(sql, updata)
+
+connection.commit()
+
+cursor.close()
+connection.close()
