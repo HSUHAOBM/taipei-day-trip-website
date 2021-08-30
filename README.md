@@ -33,7 +33,7 @@
 <hr/>
 
 ## AWS 架構
-### Client > EC2 (Nginx + Flask) 
+### Client > EC2 (Nginx + Flask) > RDS (MySQL) 
 <hr/>
 
 <br>
