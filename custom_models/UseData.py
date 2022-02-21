@@ -71,54 +71,53 @@ def LoadDataToId(id):
 
 #頁數、關鍵字取得資料
 def LoadDataToDB(WebPage,WebKeyword):#
-    try:
-        connection = getConnection()
-        conn = connection.connection()
-        cursor = conn.cursor()
+    connection = getConnection()
+    conn = connection.connection()
+    cursor = conn.cursor()
 
-        if (WebKeyword==None):
-            cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage))*12,12)) 
-            records = cursor.fetchall()
-            data=[]
-            for i in range(len(records)):
-                images=[]
-                images.append(records[i][9])
-                data.append({
-                    "id":records[i][0],
-                    "name":records[i][1],
-                    "category": records[i][2],
-                    "description": "，".join(records[i][3].split("，")[:]),
-                    "address": records[i][4],
-                    "transport": records[i][5],
-                    "mrt": records[i][6],
-                    "latitude": records[i][7],
-                    "longitude": records[i][8],
-                    "images": images
-                })            
-            return data
-        if (WebKeyword!=None):
-            cursor.execute("SELECT * FROM taipei_trip WHERE stitle Like '%{}%' LIMIT 12 OFFSET {}".format(WebKeyword, int(WebPage)*12))
-            records = cursor.fetchall()    
-            data=[]
-            for i in range(len(records)):
-                images=[]
-                images.append(records[i][9])
-                data.append({
-                    "id":records[i][0],
-                    "name":records[i][1],
-                    "category": records[i][2],
-                    "description": "，".join(records[i][3].split("，")[:]),
-                    "address": records[i][4],
-                    "transport": records[i][5],
-                    "mrt": records[i][6],
-                    "latitude": records[i][7],
-                    "longitude": records[i][8],
-                    "images": images
-                })
-            return data
-    finally:
-        cursor.close()
-        conn.close()
+    if (WebKeyword==None):
+        cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage))*12,12)) 
+        records = cursor.fetchall()
+        data=[]
+        for i in range(len(records)):
+            images=[]
+            images.append(records[i][9])
+            data.append({
+                "id":records[i][0],
+                "name":records[i][1],
+                "category": records[i][2],
+                "description": "，".join(records[i][3].split("，")[:]),
+                "address": records[i][4],
+                "transport": records[i][5],
+                "mrt": records[i][6],
+                "latitude": records[i][7],
+                "longitude": records[i][8],
+                "images": images
+            })            
+        return data
+    if (WebKeyword!=None):
+        cursor.execute("SELECT * FROM taipei_trip WHERE stitle Like '%{}%' LIMIT 12 OFFSET {}".format(WebKeyword, int(WebPage)*12))
+        records = cursor.fetchall()    
+        data=[]
+        for i in range(len(records)):
+            images=[]
+            images.append(records[i][9])
+            data.append({
+                "id":records[i][0],
+                "name":records[i][1],
+                "category": records[i][2],
+                "description": "，".join(records[i][3].split("，")[:]),
+                "address": records[i][4],
+                "transport": records[i][5],
+                "mrt": records[i][6],
+                "latitude": records[i][7],
+                "longitude": records[i][8],
+                "images": images
+            })
+        return data
+
+
+
 
 #註冊
 def Registered(name,email,password):
