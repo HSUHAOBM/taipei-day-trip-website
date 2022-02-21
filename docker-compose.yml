@@ -3,6 +3,6 @@ services:
   myweb:
     build: .
     ports:
-    - "8088:3000"
+    - "3000:3000"
     volumes:
     - .:/app
