@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/attraction_style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/userbox.css" rel="stylesheet" type="text/css" media="all" />
+
+
+    <title>Attraction</title>
+</head>
+
+<body>
+    <div id="hidebg" onClick="userboxhide()"></div>
+
+    <div class="warp">
+        <div class="head">
+            <!-- <div class="headleft" onclick="location.href='/'">台北一日遊</div> -->
+            <a class="headleft" href='/'>台北一日遊</a>
+
+            <!-- <a class="headleft" href='/'>台北一日遊</a> -->
+            <div class="headcenter"></div>
+            <div class="headright">
+                <div style="cursor:pointer;" class="bookingbtn" onclick="userboxshow();">我的行程</div>
+                <div class="loginout" onClick="userboxshow();" style="cursor: pointer;">登入/註冊</div>
+            </div>
+        </div>
+        <div class="welcome">
+            <div class="inforleft">
+                <img id="loadgif" src="/gif/ajax-loader.gif" />
+
+                <div id="list" style="left:-540px;"></div>
+
+
+                <div class="btndiv">
+                    <div id="prev" class="btnleft" onclick="prev()"><img src="/img/btn.png" /></div>
+                    <div id="next" class="btnright" onclick="next()"><img src="/img/btn.png" /></div>
+                </div>
+                <div id="buttons">
+                </div>
+
+            </div>
+            <div class="inforright">
+                <div class="righttop"></div>
+                <div class="rightmid"></div>
+                <div class="rightend">
+                    <div class="rightend1">訂購導覽行程</div>
+                    <div class="rightend2">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+                    <form action="" method="post" id="order">
+                        <div class="rightend3">
+                            <a>選擇日期：</a>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="rightend4">
+                            <a class="right4inputtitle">選擇時間：</a>
+                            <input class="right4input" type="radio" name="time" alt="新台幣 2000元" value="morning" checked required onclick="displayResult(this.alt) "> <label>上半場</label>
+                            <input class="right4input" type="radio" name="time" alt="新台幣 2500元" value="afternoon" onclick="displayResult(this.alt) "><label> 下半場</label>
+                        </div>
+                        <div class="rightend5 ">
+                            <a>導覽費用：</a>
+                            <div class="rightend5div ">新台幣 2000元</div>
+                        </div>
+                        <input class="rightend6" type="submit" value="開始預訂行程">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="information ">
+            <div class="information1 "></div>
+            <div class="information2 "></div>
+            <div class="information3 "></div>
+            <div class="information4 "></div>
+            <div class="information5 "></div>
+
+        </div>
+        <div class="footer ">COPYRIGHT © 2021 台北一日遊</div>
+    </div>
+    <div class="userbox">
+        <div class="userboxtop"></div>
+        <div class="closebtn" onclick="userboxhide()"><img src="/img/closebtn.png" /></div>
+
+        <a class="texttop">登入會員帳號</a>
+        <form action="" method="post" id="signup">
+            <input hidden class=" inputtextname" type="text" placeholder=" 輸入姓名 " />
+            <input required class=" inputtextemail " type="email" placeholder=" 輸入電子郵件 " name="useremail " pattern="^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$" value="test@test.com" />
+            <input required class="inputtextpassword " type="password" pattern="[0-9a-zA-Z]{4,12}" placeholder=" 輸入密碼4-12碼 " required pattern="{4,12} " name="userpassword" value="123456" />
+            <!-- <button class="inputbutton " onClick=connect()>登入</button> -->
+            <input class="inputbutton" type="submit" value="登入 ">
+
+        </form>
+        <a class="textpoint"></a>
+        <a class="textend " onClick=useronclick();>還沒有帳戶？點此註冊</a>
+    </div>
+    </div>
+    <script src="/js/attractionscript.js "></script>
+    <script src="/js/memberuser.js "></script>
+
+</body>
+
+</html>

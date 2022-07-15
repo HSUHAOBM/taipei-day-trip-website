@@ -1,0 +1,167 @@
+.userbox {
+    display: none;
+    /* display: flex; */
+    background: #FFFFFF;
+    width: 340px;
+    left: 50%;
+    top: 80px;
+    z-index: 99;
+    border-radius: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    transform: translate(-50%, 6%)
+}
+
+.userboxtop {
+    width: 340px;
+    height: 10px;
+    background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+}
+
+.closebtn {
+    position: absolute;
+    left: 92%;
+    top: 30px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.closebtn>img {
+    width: 100%;
+    height: 100%;
+}
+
+.texttop {
+    margin: 15px;
+    width: 310px;
+    height: 27px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666666;
+}
+
+.inputtextname,
+.inputtextemail,
+.inputtextpassword {
+    margin-bottom: 10px;
+    width: 310px;
+    height: 47px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Noto Sans TC;
+}
+
+.inputtextname::placeholder,
+.inputtextemail::placeholder,
+.inputtextpassword::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+    font-family: Noto Sans TC;
+}
+
+.inputbutton {
+    width: 310px;
+    height: 47px;
+    background: #448899;
+    border: #FFFFFF;
+    border-radius: 5px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.textend {
+    width: 310px;
+    height: 22px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+    justify-content: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+#hidebg {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: #000;
+    width: 100%;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    display: none;
+    z-Index: 50;
+}
+
+#signup {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.textpoint {
+    width: 310px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f25252;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+}
+
+.inputtextname:hover,
+.inputtextemail:hover,
+.inputtextpassword:hover {
+    border: 2px solid #CCCCCC;
+}
+
+.inputtextname::placeholder:hover,
+.inputtextemail::placeholder:hover,
+.inputtextpassword::placeholder:hover {
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    /* color: #0e0e0e; */
+}
+
+.inputbutton:hover {
+    border: 2px solid #CCCCCC;
+    font-weight: bold;
+}
+
+.textend:hover {
+    color: #000000;
+    font-weight: bold;
+}

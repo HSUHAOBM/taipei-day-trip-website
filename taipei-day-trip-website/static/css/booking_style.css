@@ -1,0 +1,559 @@
+body {
+    margin: 0px;
+    overflow: visible;
+}
+
+.head {
+    width: 1200px;
+    height: 44px;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.headleft {
+    flex: none;
+    width: 150px;
+    height: 34px;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 34px;
+    color: #448899;
+    text-decoration: none;
+}
+
+.headcenter {
+    flex: auto;
+}
+
+.headright {
+    justify-content: left;
+    flex: none;
+    width: 175px;
+    height: 34px;
+    display: flex;
+}
+
+.headright>div {
+    flex: none;
+    height: 34px;
+    width: 84px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-size: 16px;
+    border-radius: 0px;
+    line-height: 34px;
+    color: #a88e8e;
+    text-align: center
+}
+
+.headright>div:hover {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.headleft:hover {
+    color: #5ea7b9;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+    height: 865px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #757575;
+    font-weight: bold;
+    line-height: 104px;
+}
+
+
+/*-------------------*/
+
+.main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.maintop {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.welcometext {
+    padding-top: 15px;
+    width: 100%;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #666666;
+}
+
+.welcometext.a {
+    padding-top: 5px;
+}
+
+.infortext {
+    margin-top: 10px;
+    width: 980px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    /* Gray 800 */
+    color: #666666;
+}
+
+.order {
+    padding-top: 35px;
+    width: 980px;
+    display: none;
+    padding-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.orderbox {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.userorderbox {
+    display: flex;
+    margin-top: 12px;
+    font-size: 20px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userorderbox:hover {
+    font-size: 21px;
+}
+
+.a_box {
+    text-decoration: none;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.a_box.a1 {
+    color: rgb(183 40 40 / 59%);
+}
+
+.a_box.a2 {
+    color: #448899;
+    font-weight: bold;
+}
+
+.left {
+    width: 250px;
+    height: 200px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.leftimg {
+    width: 250px;
+    height: 200px;
+}
+
+.leftimg>img {
+    width: 100%;
+}
+
+.righttext {
+    position: relative;
+    padding-left: 30px;
+    width: 684px;
+    height: 170px;
+}
+
+.clearbtn>img:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.clearbtn {
+    position: absolute;
+    left: 90%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.clearbtn>img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transform: scale(1, 1);
+    transition: all .2s ease-out;
+}
+
+.righttext1>div:hover,
+.righttext2>div:hover,
+.righttext3>div:hover,
+.righttext5>div:hover,
+.righttext4>div:hover {
+    font-weight: bold;
+}
+
+.righttext1 {
+    padding-top: 5px;
+    width: 144px;
+    width: 100%;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #448899;
+}
+
+.righttext2 {
+    display: flex;
+    margin-top: 20px;
+    height: 24px;
+    align-items: center;
+    align-content: center;
+}
+
+.righttext2>a {
+    width: 48px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+}
+
+.righttext2>div {
+    width: 83px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+}
+
+.righttext3,
+.righttext5,
+.righttext4 {
+    height: 24px;
+    display: flex;
+    margin-top: 10px;
+    height: 24px;
+    align-items: center;
+    align-content: center;
+}
+
+.righttext3>div,
+.righttext5>div,
+.righttext4>div {
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+}
+
+.righttext3>a,
+.righttext5>a,
+.righttext4>a {
+    width: 48px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+}
+
+.maincenter {
+    width: 980px;
+    height: 227px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+}
+
+.maincentertext1 {
+    padding-top: 4px;
+    width: 100%;
+    height: 16px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 16px;
+    color: #666666;
+}
+
+.maincenterinput1>a,
+.maincenterinput2>a,
+.maincenterinput3>a {
+    width: 81px;
+    height: 24px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+}
+
+.maincenterinput1,
+.maincenterinput2,
+.maincenterinput3 {
+    width: 100%;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.maincenterinput3>input:hover,
+.maincenterinput2>input:hover,
+.maincenterinput1>input:hover,
+.form-control:hover {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.form-group {
+    width: 980px;
+    height: 188px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+}
+
+.form-group.title {
+    padding-top: 4px;
+    padding-bottom: 0px;
+    width: 100%;
+    height: 16px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 16px;
+    color: #666666;
+}
+
+.form-group.card-number-group,
+.form-group.expiration-date-group,
+.form-group.cvc-group {
+    width: 100%;
+    height: 38px;
+    margin-top: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: flex;
+}
+
+.form-group.card-number-group>.control-label,
+.form-group.expiration-date-group>.control-label,
+.form-group.cvc-group>.control-label {
+    height: 38px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 38px;
+    color: #666666;
+}
+
+.form-group.card-number-group>#card-number,
+.form-group.expiration-date-group>#card-expiration-date,
+.form-group.cvc-group>#card-ccv {
+    width: 190px;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+input {
+    width: 190px;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.maincentertext2 {
+    margin-top: 20px;
+    height: 14px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    color: #666666;
+}
+
+.mainfinsh {
+    padding-top: 40px;
+    width: 980px;
+    height: 100px;
+    margin: 0 auto;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.mainfinsh>a {
+    height: 14px;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 13px;
+    color: #666666;
+}
+
+#message {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff0400;
+}
+
+.mainfinsh>button {
+    justify-content: center;
+    margin-top: 20px;
+    background: #448899;
+    border-radius: 5px;
+    width: 154px;
+    height: 36px;
+    font-family: Noto Sans TC;
+    font-size: 19px;
+    color: #FFFFFF;
+}
+
+.mainfinsh>button:hover {
+    border: 3px solid rgb(0, 0, 0);
+    font-size: 19px;
+}
+
+.tappay-field-focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.has-error .tappay-field-focus {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+
+.has-success .tappay-field-focus {
+    border-color: #2b542c;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+}
+
+#loadgif {
+    display: flex;
+    width: 26px;
+    padding-top: 15px;
+}
+
+#loadgif2 {
+    display: flex;
+    width: 26px;
+    padding-top: 15px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 1200px) {
+    .head {
+        width: 100%;
+        margin: 0;
+    }
+    .main {
+        width: 100%;
+    }
+    .maintop {
+        width: 95%;
+    }
+    .maincenter {
+        width: 95%;
+    }
+    .form-group {
+        width: 95%;
+    }
+    .mainfinsh {
+        width: 95%;
+    }
+    .order {
+        width: 100%;
+        margin: 0;
+    }
+    .maincenter2 {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .head {
+        width: 100%;
+        margin: 0;
+    }
+    .main {
+        width: 100%;
+        margin: 0;
+    }
+    .maintop {
+        width: 95%;
+    }
+    .order {
+        display: 100%;
+        margin: 0;
+    }
+    .maincenter {
+        width: 95%;
+    }
+    .form-group {
+        width: 95%;
+    }
+    .maincenter2 {
+        width: 95%;
+    }
+    .clearbtn {
+        top: 100%;
+    }
+    .righttext {
+        width: 100%;
+        padding-left: 0px;
+    }
+    .mainfinsh {
+        width: 95%;
+    }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北一日遊</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/userbox.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/thankyou_style.css" rel="stylesheet" type="text/css" media="all" />
+
+
+
+</head>
+
+<body>
+    <div id="hidebg" onClick="userboxhide()"></div>
+    <div class="warp">
+        <div class="head">
+            <!-- <div class="headleft" onclick="location.href='/'">台北一日遊</div> -->
+            <a class="headleft" href='/'>台北一日遊</a>
+            <div class="headcenter"></div>
+            <div class="headright">
+                <div style="cursor:pointer;" class="bookingbtn" onclick="userboxshow();">我的行程</div>
+                <div class="loginout" onClick="userboxshow();" style="cursor: pointer;">登入/註冊</div>
+            </div>
+        </div>
+        <div class="main">
+            <fieldset>
+                <legend class="order title"></legend>
+                <img id="loadgif" src="/gif/ajax-loader4.gif" />
+
+                <div class="orderbox">
+                    <div class="orderstr">
+                        <div class="order number"></div>
+                        <div class="order address"></div>
+                        <div class="order time"></div>
+                        <div class="order name"></div>
+                        <div class="order phone"></div>
+                        <div class="order email"></div>
+                    </div>
+                    <div class="orderimg">
+                        <img src="" title=""></div>
+                </div>
+        </div>
+        </fieldset>
+    </div>
+    </div>
+
+
+    <div class="footer ">COPYRIGHT © 2021 台北一日遊</div>
+
+    </div>
+    <div class="userbox">
+        <div class="userboxtop"></div>
+        <div class="closebtn" onclick="userboxhide()"><img src="/img/closebtn.png" /></div>
+
+        <a class="texttop">登入會員帳號</a>
+        <form action="" method="post" id="signup">
+            <input hidden class=" inputtextname" type="text" placeholder=" 輸入姓名 " />
+            <input required class=" inputtextemail " type="email" placeholder=" 輸入電子郵件 " name="useremail " pattern="^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$" />
+            <input required class="inputtextpassword " type="password" pattern="[0-9a-zA-Z]{4,12}" placeholder=" 輸入密碼4-12碼 " required pattern="{4,12} " name="userpassword " />
+            <!-- <button class="inputbutton " onClick=connect()>登入</button> -->
+            <input class="inputbutton" type="submit" value="登入">
+
+        </form>
+        <a class="textpoint"></a>
+        <a class="textend" onClick=useronclick();>還沒有帳戶？點此註冊</a>
+    </div>
+    </div>
+
+
+    <script src="/js/thankyou.js "></script>
+    <script src="/js/memberuser.js "></script>
+
+
+</body>
+
+</html>

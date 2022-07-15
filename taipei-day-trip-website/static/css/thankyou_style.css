@@ -1,0 +1,124 @@
+.main {
+    padding-top: 30px;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+body {
+    margin: 0p;
+    background-color: rgb(250, 250, 250);
+}
+
+fieldset {
+    padding: 40px 50px;
+    box-shadow: 3px 3px 10px #666;
+    background: -webkit-linear-gradient(top, #EEE, #FFF);
+    background: -moz-linear-gradient(top, #EEE, #FFF);
+}
+
+.order.title {
+    box-shadow: 2px 2px 4px #666;
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    width: 850px;
+    color: white;
+    background-color: #757575;
+    padding: 7px 16px;
+    border-radius: 30px;
+}
+
+#loadgif {
+    width: 40px;
+}
+
+.order {
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+    color: #666666;
+    padding-top: 20px;
+    padding-left: 20px
+}
+
+.order.number {
+    padding-top: 0px;
+}
+
+.orderimg {
+    width: 300px;
+}
+
+.orderimg>img {
+    width: 100%;
+    box-shadow: 1px 1px 10px 1px;
+    border-radius: 10px
+}
+
+.orderbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.orderstr {
+    width: 550px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 1200px) {
+    .head {
+        width: 100%;
+        margin: 0;
+    }
+    .main {
+        width: 100%;
+    }
+    .order.title {
+        width: 100%;
+    }
+    fieldset {
+        margin: 0 auto;
+        width: 85%;
+        padding: 40px 10px;
+    }
+    .orderimg {
+        padding-top: 50px;
+    }
+    .orderstr {
+        width: 85%;
+    }
+    .orderbox {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .head {
+        width: 100%;
+        margin: 0;
+    }
+    .main {
+        width: 100%;
+    }
+    .order.title {
+        width: 100%;
+    }
+    fieldset {
+        margin: 0 auto;
+        width: 85%;
+        padding: 40px 10px;
+    }
+    .orderimg {
+        padding-top: 50px;
+    }
+    .orderstr {
+        width: 85%;
+    }
+    .orderbox {
+        width: 100%;
+    }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/booking_style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/userbox.css" rel="stylesheet" type="text/css" media="all" />
+
+
+    <title>Attraction</title>
+</head>
+
+<body>
+    <div id="hidebg" onClick="userboxhide()"></div>
+
+    <div class="warp">
+        <div class="head">
+            <!-- <div class="headleft" onclick="location.href='/'">台北一日遊</div> -->
+            <a class="headleft" href='/'>台北一日遊</a>
+
+            <!-- <a class="headleft" href='/'>台北一日遊</a> -->
+            <div class="headcenter"></div>
+            <div class="headright">
+                <div style="cursor:pointer;" class="bookingbtn" onclick="userboxshow();">我的行程</div>
+                <div class="loginout" onClick="userboxshow();" style="cursor: pointer;">登入/註冊</div>
+            </div>
+        </div>
+        <div class="main">
+
+            <div class="maintop">
+                <a class="welcometext">你好，來賓！</a>
+                <a class="welcometext a">已預定行程如下：</a>
+                <div class="orderbox"></div>
+                <img id="loadgif" src="/gif/ajax-loader4.gif" />
+
+                <a class="welcometext b">待預定的行程如下：</a>
+                <img id="loadgif2" src="/gif/ajax-loader4.gif" />
+
+                <a class="infortext" hidden>目前沒有任何待預訂的行程</a>
+
+                <div class="order">
+                    <div class="left">
+                        <div class="leftimg">
+                            <img src="" title="123"></div>
+                    </div>
+                    <div class="righttext ">
+                        <div class="clearbtn " onclick="clearapi()"><img src="/img/clear.png " title="刪除行程 " /></div>
+                        <div class="righttext1 "></div>
+                        <div class="righttext2 ">
+                            <a>日期：</a>
+                            <div></div>
+                        </div>
+                        <div class="righttext3 ">
+                            <a>時間：</a>
+                            <div></div>
+                        </div>
+                        <div class="righttext4 ">
+                            <a>費用：</a>
+                            <div></div>
+                        </div>
+                        <div class="righttext5 ">
+                            <a>地點：</a>
+                            <div></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <form id="formtappay">
+
+                <hr id="hr1" hidden>
+                <div class="maincenter" hidden>
+                    <div class="maincentertext1 ">您的聯絡資訊</div>
+                    <div class="maincenterinput1 ">
+                        <a>聯絡姓名：</a>
+                        <input type="text "></div>
+                    <div class="maincenterinput2" required>
+                        <a>聯絡信箱：</a>
+                        <input type="email" required></div>
+                    <div class="maincenterinput3 ">
+                        <a>手機號碼：</a>
+                        <input type="text" pattern="^09\d{8}$" required value="0987654321"></div>
+
+                    <div class="maincentertext2 ">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</div>
+
+                </div>
+                <hr id="hr2" hidden>
+                <div class="form-group" hidden>
+                    <div class="form-group title ">信用卡付款資訊</div>
+                    <div class="form-group card-number-group">
+                        <label for="card-number" class="control-label"><span id="cardtype"></span>卡片號碼：</label>
+                        <div class="form-control card-number" id="card-number"></div>
+                    </div>
+
+                    <div class="form-group expiration-date-group">
+                        <label for="expiration-date" class="control-label">卡片到期日：</label>
+                        <div class="form-control expiration-date" id="card-expiration-date"></div>
+                    </div>
+
+                    <div class="form-group cvc-group">
+                        <label for="cvc" class="control-label">卡片後三碼：</label>
+                        <div class="form-control cvc" id="card-ccv"></div>
+                    </div>
+
+                </div>
+                <hr id="hr3" hidden>
+                <div class="mainfinsh">
+                    <a>總價：新台幣 2000 元</a>
+                    <button type="submit" class="btn btn-default ">確認訂購並付款</button>
+                    <div id="message"></div>
+                </div>
+            </form>
+
+        </div>
+        <div class=" footer ">COPYRIGHT © 2021 台北一日遊</div>
+    </div>
+    <div class="userbox">
+        <div class="userboxtop"></div>
+        <div class="closebtn" onclick="userboxhide()"><img src="/img/closebtn.png" /></div>
+
+        <a class="texttop">登入會員帳號</a>
+        <form action="" method="post" id="signup">
+            <input hidden class=" inputtextname" type="text" placeholder=" 輸入姓名 " />
+            <input required class=" inputtextemail " type="email" placeholder=" 輸入電子郵件 " name="useremail " pattern="^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$" value="test@test.com" />
+            <input required class="inputtextpassword " type="password" pattern="[0-9a-zA-Z]{4,12}" placeholder=" 輸入密碼4-12碼 " required pattern="{4,12} " name="userpassword " value="123456" />
+            <!-- <button class="inputbutton " onClick=connect()>登入</button> -->
+            <input class="inputbutton" type="submit" value="登入 ">
+
+        </form>
+        <a class="textpoint"></a>
+        <a class="textend " onClick=useronclick();>還沒有帳戶？點此註冊</a>
+    </div>
+    </div>
+
+    <script src="/js/memberuser.js "></script>
+    <script src="https://js.tappaysdk.com/tpdirect/v5.7.0 "></script>
+    <script src="/js/booking.js "></script>
+
+
+</body>
+
+</html>
