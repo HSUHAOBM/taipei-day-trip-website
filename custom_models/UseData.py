@@ -1,9 +1,8 @@
 from logging import error
-import mysql.connector
 from datetime import datetime
 import configparser
 import os
-from DBUtils.PooledDB import PooledDB,SharedDBConnection
+from dbutils.pooled_db import PooledDB
 import pymysql
 
 config = configparser.ConfigParser()
@@ -11,17 +10,19 @@ config.read('config.ini')
 parent_dir = os.path.dirname(os.path.abspath(__file__))
 config.read(parent_dir + "/config.ini")
 
-DBhost=config.get('aws_rd', 'DBhost')   
-DBdatabase=config.get('aws_rd', 'DBdatabase')
-DBuser=config.get('aws_rd', 'DBuser')
-DBpassword=config.get('aws_rd', 'DBpassword')
+DBhost=config.get('use_db', 'DBhost')
+DBdatabase=config.get('use_db', 'DBdatabase')
+DBuser=config.get('use_db', 'DBuser')
+DBpassword=config.get('use_db', 'DBpassword')
 
 def getConnection():
     connection = PooledDB(
     creator=pymysql,
     maxconnections=3,
     mincached=5,
-    maxcached=6,maxshared=6,host=DBhost,
+    maxcached=6,
+    maxshared=6,
+    host=DBhost,
     charset='utf8',database=DBdatabase,user=DBuser,password=DBpassword)
     return connection
 
@@ -76,7 +77,7 @@ def LoadDataToDB(WebPage,WebKeyword):#
     cursor = conn.cursor()
 
     if (WebKeyword==None):
-        cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage))*12,12)) 
+        cursor.execute("Select * from taipei_trip limit %d , %d;"%((int(WebPage))*12,12))
         records = cursor.fetchall()
         data=[]
         for i in range(len(records)):
@@ -93,11 +94,11 @@ def LoadDataToDB(WebPage,WebKeyword):#
                 "latitude": records[i][7],
                 "longitude": records[i][8],
                 "images": images
-            })            
+            })
         return data
     if (WebKeyword!=None):
         cursor.execute("SELECT * FROM taipei_trip WHERE stitle Like '%{}%' LIMIT 12 OFFSET {}".format(WebKeyword, int(WebPage)*12))
-        records = cursor.fetchall()    
+        records = cursor.fetchall()
         data=[]
         for i in range(len(records)):
             images=[]
@@ -130,7 +131,7 @@ def Registered(name,email,password):
         cursor.execute("SELECT * FROM membertable WHERE useremail= '%s' limit 1;" % (email))
         records = cursor.fetchone()
 
-            
+
         if (records):
             # print("註冊過了")
             return {"error": True, "message": "信箱重複註冊!"}
@@ -187,7 +188,7 @@ def Ordersave(useremail,userid,getorderdata,getordersapimessage):
         cursor.execute(sql, new_data)
         conn.commit()
         # print("訂單建立成功")
-        
+
         #建立訂單標號
         cursor = conn.cursor()
         cursor.execute("Select id from ordertable where prime='%s';"%(getorderdata["prime"]))
@@ -200,12 +201,12 @@ def Ordersave(useremail,userid,getorderdata,getordersapimessage):
         # print("訂單回存成功")
         # cursor.execute("UPDATE ordertable SET payment='已付款' where prime='%s';"%(getorderdata["prime"]))
         return tripordernumber
-        
+
     finally:
         cursor.close()
         conn.close()
 
-#更新資料庫            
+#更新資料庫
 def Orderupdate(getorderdata):
     try:
         connection = getConnection()
@@ -216,7 +217,7 @@ def Orderupdate(getorderdata):
         # print("訂單付款狀態已更新")
         getordersapimessage="已付款"
         return getordersapimessage
-        
+
     finally:
         cursor.close()
         conn.close()
@@ -272,7 +273,7 @@ def getorderdata(ordernumber,useremail):
                 }
               }
             }
-        else: 
+        else:
             orderapi=None
         return orderapi
 

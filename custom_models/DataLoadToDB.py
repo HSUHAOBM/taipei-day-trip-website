@@ -1,6 +1,6 @@
 import json
 import re
-import mysql.connector
+import pymysql
 
 updata=[]
 
@@ -12,15 +12,15 @@ config.read('config.ini')
 parent_dir = os.path.dirname(os.path.abspath(__file__))
 config.read(parent_dir + "/config.ini")
 
-DBhost=config.get('aws_rd', 'DBhost')   
-DBdatabase=config.get('aws_rd', 'DBdatabase')
-DBuser=config.get('aws_rd', 'DBuser')
-DBpassword=config.get('aws_rd', 'DBpassword')
+DBhost=config.get('use_db', 'DBhost')
+DBdatabase=config.get('use_db', 'DBdatabase')
+DBuser=config.get('use_db', 'DBuser')
+DBpassword=config.get('use_db', 'DBpassword')
 
 with open(parent_dir +"/data/taipei-attractions.json","r",encoding="utf-8") as json_data:
     data = json.load(json_data)
 
-def getimg(a): #圖片篩選  
+def getimg(a): #圖片篩選
     reg="http.*?\.jpg"
     imgre =re.compile(reg)
     imglist_jgp=imgre.findall(a)
@@ -44,20 +44,24 @@ for i in range(len(data["result"]["results"])):
                    ,",".join(getimg(",http://".join(data["result"]["results"][i]["file"].lower().split("http://"))))
                   ])
 
-print(updata)
+print(updata[0])
 
-connection = mysql.connector.connect(
-host=DBhost,         
-database=DBdatabase, 
-user=DBuser,      
-password=DBpassword) 
+def main():
+    try:
+        connection = pymysql.connect(
+        host=DBhost,
+        database=DBdatabase,
+        user=DBuser,
+        password=DBpassword)
+        sql = f"""INSERT INTO taipei_trip (id,stitle,category,description,address,transport,mrt,latitude,longitude,images) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"""
 
-sql = f"""INSERT INTO taipei_trip (id,stitle,category,description,address,transport,mrt,latitude,longitude,images) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"""
 
-cursor = connection.cursor()
-cursor.executemany(sql, updata)
+        cursor = connection.cursor()
+        cursor.executemany(sql, updata)
+        connection.commit()
 
-connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
 
-cursor.close()
-connection.close()
+main()
